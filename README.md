@@ -7,7 +7,7 @@
 
 ###克隆项目  
 
-git clone https://git.beswell.com/duanchangpeng/backstage.git  
+git clone https://github.com/mefistoduan/EVA-OS.git
 
 ###进入项目目录  
 
