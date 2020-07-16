@@ -2,8 +2,8 @@
     <div class="timePart">
         <div class="lt">
             <h5>活动限界 <s>ACTIVE RANGE</s></h5>
-            <P>8:88:88</P>
-            <span>46%</span>
+            <P>{{time}}</P>
+            <span>{{percent}}%</span>
             <ul>
                 <li>
                     <em>STOP</em>
@@ -11,7 +11,7 @@
                 </li>
                 <li>
                     <em>SLOW</em>
-                    <i v-if="i == 3"></i>
+                    <i v-if="i == 2"></i>
                 </li>
                 <li>
                     <em>NORMAL</em>
@@ -27,7 +27,7 @@
             <div class="top">
                 <h5>内部</h5>
                 <s>INTERNAL</s>
-                <i v-if="type==1"></i>
+                <i v-if="type"></i>
             </div>
             <div class="middle">
                 <span>主电源供给</span>
@@ -36,18 +36,38 @@
             <div class="bottom">
                 <h5>外部</h5>
                 <s>EXTERNAL</s>
-                <i v-if="type==2"></i>
+                <i v-if="!type"></i>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import global from '../Global'
     export default {
         data() {
             return {
                 i: 1,
-                type:1
+                type:true,
+                time:'8:88:88',
+                percent:'00',
+            }
+        },
+        mounted(){
+            this.mockDate();
+            this.timer = setInterval(() => {
+                this.mockDate();
+            },1000);
+        },
+        beforeDestroy () {
+            clearInterval(this.timer);
+        },
+        methods:{
+            mockDate(){
+                this.time = globalcurrentTime();
+                this.percent = (Math.random(0,100)*100).toFixed(0);
+                this.type = !this.type;
+                this.i = parseInt(Math.random(1,4)*10);
             }
         }
     }
@@ -118,7 +138,7 @@
         color: #01355B;
         text-align: left;
         font-family: UniDreamLED;
-        letter-spacing:8px;
+        letter-spacing:3px;
     }
 
     .timePart .lt span {
@@ -200,7 +220,10 @@
         float: right;
         width: 15px;
         height: 30px;
-        background: aliceblue;
+        background: linear-gradient(135deg,#fff 25%,#005EA2 0,
+        #005EA2 50%,#fff 0,
+        #fff 75%,#005EA2 0);
+        background-size: 12px 12px;
     }
 
     .rt .middle {

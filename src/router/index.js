@@ -28,61 +28,75 @@ const routes = [
                 meta: {
                     title: "首页",
                 }
-            },{
+            }, {
                 path: '/yhgl',
                 name: 'Yhgl',
                 component: () => import('@/views/Yhgl.vue'),
                 meta: {
                     title: "用户管理",
                 }
-            },{
+            }, {
                 path: '/mockPage',
                 name: 'MockPage',
                 component: () => import('@/views/MockPage.vue'),
                 meta: {
                     title: "用户管理",
                 }
-            },{
+            }, {
                 path: '/chart',
                 name: 'Chart',
                 component: () => import('@/views/Chart.vue'),
                 meta: {
                     title: "图表效果",
                 }
-            },{
+            }, {
                 path: '/test',
                 name: 'Test',
                 component: () => import('@/views/Test.vue'),
                 meta: {
                     title: "Test",
                 }
-            },{
+            }, {
                 path: '/aboutUs',
                 name: 'AboutUs',
                 component: () => import('@/views/AboutUs.vue'),
                 meta: {
                     title: "关于我们",
                 }
-            },{
+            }, {
                 path: '/pwd',
                 name: 'Pwd',
                 component: () => import('@/views/Pwd.vue'),
                 meta: {
                     title: "密码修改",
                 }
-            },{
+            }, {
                 path: '/basic',
                 name: 'Basic',
                 component: () => import('@/views/Basic.vue'),
                 meta: {
                     title: "基本设置",
                 }
-            },{
+            }, {
                 path: '/upload',
                 name: 'Upload',
                 component: () => import('@/views/Upload.vue'),
                 meta: {
                     title: "上传文件",
+                }
+            },{
+                path: '/timePage',
+                name: 'TimePage',
+                component: () => import('@/views/TimePage.vue'),
+                meta: {
+                    title: "",
+                }
+            },{
+                path: '/handPage',
+                name: 'HandPage',
+                component: () => import('@/views/HandPage.vue'),
+                meta: {
+                    title: "",
                 }
             },
         ]
@@ -90,7 +104,8 @@ const routes = [
         path: '/login',
         name: 'Login',
         component: () => import( '../views/Login.vue')
-    },, {
+    },
+   {
         path: '*',
         name: '404',
         component: () => import( '../views/404.vue')
@@ -109,14 +124,14 @@ const router = new VueRouter({
 });
 
 // 路由守卫
-router.beforeEach((to,from,next)=>{
+router.beforeEach((to, from, next) => {
     NProgress.start()
-    const isLogin = localStorage.token? true : false;
-    if(to.path == '/login' || to.path == '/register'){//'login'和'register'相当于是路由白名单
+    const isLogin = localStorage.token ? true : false;
+    if (to.path == '/login' || to.path == '/register') {//'login'和'register'相当于是路由白名单
         next();
-    }else{
+    } else {
         //如果token存在，就正常跳转，如果不存在，则说明未登陆，则跳转到'login'
-        isLogin? next() : next("/login");
+        isLogin ? next() : next("/login");
     }
 });
 

@@ -66,6 +66,17 @@ globalcurrent = function () {
     return thisdata;
 };
 
+globalcurrentTime = function () {
+    let date = new Date();
+    let Hours = date.getHours();
+    let Minutes = date.getMinutes();
+    let Seconds = date.getSeconds();
+    Hours = Hours < 10 ? '0' + Hours : Hours;
+    Minutes = Minutes < 10 ? '0' + Minutes : Minutes;
+    Seconds = Seconds < 10 ? '0' + Seconds : Seconds;
+    return Hours + ":" + Minutes + ":" + Seconds;
+};
+
 // 校验内容长度
 globalValid = function (data, mins, maxs, text, that) {
     let thisVal = data;
@@ -74,7 +85,7 @@ globalValid = function (data, mins, maxs, text, that) {
     let max = parseInt(maxs);
     let dispalyMin = min + 1;
     let title = '警告';
-    if (thisVal == '' ) {
+    if (thisVal == '') {
         that.$message({
             message: text + '不能为空！',
             type: 'warning'

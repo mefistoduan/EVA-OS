@@ -1,18 +1,18 @@
 <template>
-    <div class="container">
-<!--        <timePart></timePart>-->
-<!--        <hand></hand>-->
+    <div>
+        <timePart></timePart>
     </div>
 </template>
 
 <script>
+    import timePart from '@/components/timePart.vue'
     export default {
         data() {
             return {
-                editableTabsValue: '1'
             }
         },
         components: {
+            timePart
         }
     }
 </script>
