@@ -1,6 +1,7 @@
 <template>
     <div class="container">
-        <Hand></Hand>
+        <el-button type="success" @click="toggle">click me</el-button>
+        <Hand :state="state"></Hand>
     </div>
 </template>
 
@@ -9,6 +10,12 @@
     export default {
         data() {
             return {
+                state:true
+            }
+        },
+        methods:{
+            toggle(){
+                this.state = !this.state;
             }
         },
         components: {

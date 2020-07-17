@@ -1,6 +1,7 @@
 <template>
     <div class="hand">
-        <div class="container">
+        <transition name="el-zoom-in-center">
+        <div class="container" v-show="state">
             <div class="subtitle">
                 <div class="lt">
                     > SELECTED >STAT
@@ -19,12 +20,14 @@
                 </div>
             </div>
         </div>
+        </transition>
     </div>
 </template>
 
 <script>
     export default {
-        name: "timer"
+        props:['state'],
+
     }
 </script>
 
