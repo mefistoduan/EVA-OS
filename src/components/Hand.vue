@@ -1,32 +1,32 @@
 <template>
     <div class="hand">
         <transition name="el-zoom-in-center">
-        <div class="container" v-show="state">
-            <div class="subtitle">
-                <div class="lt">
-                    > SELECTED >STAT
-                </div>
-                <div class="rt">
-                    USR:M.KATSURAGI
-                </div>
-                <div class="main">
-                    <div class="text">
-                        <p> > DETONATION FUNCTION</p>
-                        <h5><em>READY</em> <I></I></h5>
+            <div class="container" v-show="state">
+                <div class="subtitle">
+                    <div class="lt">
+                        > SELECTED >STAT
                     </div>
-                    <div class="logo">
-                        <img src="../assets/wille.png" height="208" width="219"/>
+                    <div class="rt">
+                        USR:M.KATSURAGI
+                    </div>
+                    <div class="main">
+                        <div class="text">
+                            <p> > DETONATION FUNCTION</p>
+                            <h5><em>READY</em> <I></I></h5>
+                        </div>
+                        <div class="logo">
+                            <img src="../assets/wille.png" height="208" width="219"/>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         </transition>
     </div>
 </template>
 
 <script>
     export default {
-        props:['state'],
+        props: ['state'],
 
     }
 </script>
@@ -55,7 +55,7 @@
         overflow: hidden;
         display: block;
         margin: 0 auto;
-        background: darkgoldenrod;
+        background: #bd7f2a;
         color: #fff;
         border: 2px solid #fff;
         padding: 5px;
@@ -122,10 +122,12 @@
         margin-left: 10px;
         animation: myAnimation 1s infinite
     }
+
     .logo {
         float: right;
     }
-    .logo  img {
+
+    .logo img {
         width: 70px;
         height: 70px;
         float: right;

@@ -98,6 +98,13 @@ const routes = [
                 meta: {
                     title: "",
                 }
+            },{
+                path: '/radarPage',
+                name: 'RadarPage',
+                component: () => import('@/views/RadarPage.vue'),
+                meta: {
+                    title: "",
+                }
             },
         ]
     }, {
