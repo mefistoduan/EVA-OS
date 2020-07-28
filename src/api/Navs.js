@@ -1,4 +1,35 @@
-let navs = [ {
+let navs = [{
+    "clmid": "1",
+    "spclmid": "0",
+    "ordno": "1",
+    "c_level": "1",
+    "clmcode": "index",
+    "clmname": "系统首页",
+    "clmurl": "",
+    "prname": "",
+    "en": "1",
+    "show": "1",
+    "grouplist": "2,5",
+    "memo": "",
+    "icon": "icon-home",
+    "childs": [
+        {
+            "clmid": "11",
+            "spclmid": "0",
+            "ordno": "0",
+            "c_level": "2",
+            "clmcode": "icon-home",
+            "clmname": "系统首页",
+            "clmurl": "/",
+            "prname": null,
+            "en": "1",
+            "show": "1",
+            "grouplist": "2,5",
+            "memo": null,
+            "icon": "icon-home"
+        },
+    ]
+}, {
     "clmid": "2",
     "spclmid": "0",
     "ordno": "1",
@@ -27,7 +58,7 @@ let navs = [ {
             "grouplist": "2,5",
             "memo": null,
             "clicon": "home_icon"
-        },{
+        }, {
             "clmid": "22",
             "spclmid": "0",
             "ordno": "0",
@@ -41,7 +72,7 @@ let navs = [ {
             "grouplist": "2,5",
             "memo": null,
             "clicon": "home_icon"
-        },{
+        }, {
             "clmid": "23",
             "spclmid": "0",
             "ordno": "0",
@@ -102,7 +133,7 @@ let navs = [ {
                 "grouplist": "2,5",
                 "memo": null,
                 "clicon": "home_icon"
-            },  {
+            }, {
                 "clmid": "32",
                 "spclmid": "0",
                 "ordno": "0",
@@ -110,6 +141,20 @@ let navs = [ {
                 "clmcode": "front_index",
                 "clmname": "雷达面板",
                 "clmurl": "/radarPage",
+                "prname": null,
+                "en": "1",
+                "show": "1",
+                "grouplist": "2,5",
+                "memo": null,
+                "clicon": "home_icon"
+            },{
+                "clmid": "33",
+                "spclmid": "0",
+                "ordno": "0",
+                "c_level": "2",
+                "clmcode": "front_index",
+                "clmname": "警告",
+                "clmurl": "/warningPage",
                 "prname": null,
                 "en": "1",
                 "show": "1",

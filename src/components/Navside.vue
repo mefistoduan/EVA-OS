@@ -1,8 +1,6 @@
 <template>
     <div>
         <el-row  :class="[{'shortnav':isCollapse},{'longNav':!isCollapse}]">
-            <img src="../assets/logo.png" class="logo" width="100%" height="60px" alt="" v-if="!isCollapse">
-            <img src="../assets/logo.png" class="littleLogo" width="65px" height="60px" alt="" v-if="isCollapse">
             <el-col :span="24">
                 <el-menu
                         default-active="2"
@@ -16,10 +14,6 @@
                         router
                         :collapse="isCollapse"
                 >
-                    <el-menu-item index="1" route="/" title="系统首页">
-                        <i class="el-icon-location"></i>
-                        <span slot="title">系统首页</span>
-                    </el-menu-item>
                     <el-submenu :index="nav.clmid" :route="nav.clmurl" v-for="nav in navs">
                         <template slot="title">
                             <i class="el-icon-location"></i>
@@ -30,10 +24,16 @@
                             </el-menu-item>
                         </el-menu-item-group>
                     </el-submenu>
-                    <el-menu-item index="99" route="#" title="退出登陆"  @click="clickLogout">
-                        <i class="el-icon-location"></i>
-                        <span slot="title">退出登陆</span>
-                    </el-menu-item>
+                    <el-submenu index="99">
+                        <template slot="title">
+                            <i class="icon-logout"></i>
+                            <span>退出登陆</span>
+                        </template>
+                        <el-menu-item-group>
+                            <el-menu-item @click="clickLogout">退出登陆
+                            </el-menu-item>
+                        </el-menu-item-group>
+                    </el-submenu>
                 </el-menu>
             </el-col>
         </el-row>
@@ -90,18 +90,19 @@
     .shortnav {
         position: absolute;
         width: 65px;
-        top: 0;
+        top: 48px;
         bottom: 0;
         overflow: hidden;
         display: block;
         margin: 0 auto;
         height: 100%;
+        background: #3B3B3B;
     }
 
     .longNav {
         position: absolute;
         width: 320px;
-        top: 0;
+        top: 48px;
         bottom: 0;
         overflow: hidden;
         display: block;
@@ -111,6 +112,27 @@
 
     .el-col, .el-menu {
         height: 100%;
+        border-right: 0;
+    }
+
+    /deep/ .el-menu-item {
+        background-color: rgba(255, 255, 255, 0) !important;
+    }
+
+    /deep/ .el-menu {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    /deep/ .el-submenu__title {
+        background: rgba(255, 255, 255, 0) !important;
+    }
+
+    .el-menu li:hover {
+        background: #00599A;
+    }
+
+    /deep/ .el-menu-item:hover {
+        background: #00599A !important;
     }
 
     .logout {
@@ -118,13 +140,80 @@
         font-size: 14px;
         cursor: pointer;
         height: 56px;
-        line-height: 56px;
+        /*line-height: 56px;*/
     }
 
     .logout:hover {
         background: rgb(67, 74, 80);
     }
+
     .littleLogo {
         float: left;
+    }
+
+    .icon-home {
+        width: 18px;
+        height: 18px;
+        float: left;
+        margin-top: 20px;
+        background-size: 100%;
+    }
+
+    .icon-location {
+        width: 18px;
+        height: 18px;
+        float: left;
+        margin-top: 20px;
+        background-size: 100%;
+    }
+
+    .icon-list {
+        width: 18px;
+        height: 22px;
+        float: left;
+        margin-top: 20px;
+        background-size: 100% 100%;
+    }
+
+    .icon-equip {
+        width: 18px;
+        height: 22px;
+        float: left;
+        margin-top: 20px;
+        background-size: 100%;
+    }
+
+    .icon-qrcode {
+        width: 18px;
+        height: 18px;
+        float: left;
+        margin-top: 20px;
+        background-size: 100%;
+    }
+
+    .icon-setting {
+        width: 18px;
+        height: 18px;
+        float: left;
+        margin-top: 20px;
+        background-size: 100%;
+    }
+
+    .icon-logout {
+        width: 18px;
+        height: 18px;
+        float: left;
+        margin-top: 20px;
+        background-size: 100%;
+    }
+
+    /deep/ .el-menu-item-group .el-menu-item {
+        height: 25px !important;
+        line-height: 25px !important;
+    }
+
+    /deep/ .el-menu-item {
+        height: 30px;
+        line-height: 20px;
     }
 </style>
