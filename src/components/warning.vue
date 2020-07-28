@@ -20,15 +20,15 @@
         overflow: hidden;
         display: block;
         margin: 0 auto;
-        color: #bf001d;
+        color: #da000c;
     }
 
     .border {
         width: 100%;
         height: 30px;
-        background: linear-gradient(135deg, #fff 25%, #bf001d 0,
-        #bf001d 50%, #fff 0,
-        #fff 75%, #bf001d 0);
+        background: linear-gradient(135deg, #fff 25%, #da000c 0,
+        #da000c 50%, #fff 0,
+        #fff 75%, #da000c 0);
         background-size: 24px 24px;
         animation: progress-bar-stripes 6s linear infinite;
     }
@@ -60,7 +60,7 @@
         overflow: hidden;
         display: block;
         margin: 5px auto;
-        border: 1px solid #bf001d;
+        border: 1px solid #da000c;
         text-align: center;
     }
 </style>
