@@ -2,7 +2,6 @@ import axios from 'axios';
 import global from '../Global.js'
 // 基础方法进行封装
 function getApiBasic(url, postdata) {
-    console.log(postdata);
     return  axios.post(url, postdata).then(function(data){
         let json = data.data;
         return json

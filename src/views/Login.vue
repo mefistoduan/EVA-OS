@@ -3,27 +3,34 @@
         <el-container>
             <el-header></el-header>
             <el-main>
-                <h5 class="title">XXXX系统管理</h5>
-                <span class="subtitle">XXXXXX、XXXXXX等管理系统</span>
-                <el-card class="box-card">
-                    <div class="boxTitle">登陆</div>
-                    <el-form ref="form" :model="form" label-width="0px">
-                        <el-form-item label="">
-                            <el-input v-model="form.name" placeholder="用户名"></el-input>
-                        </el-form-item>
-                        <el-form-item label="">
-                            <el-input v-model="form.pwd" placeholder="密码"></el-input>
-                        </el-form-item>
-                        <el-form-item label="">
-                            <el-input v-model="form.valid" placeholder="验证码"></el-input>
-                            <img id="validImg" :src="valImgSrc" alt="" width="100px" height="30px" title="看不清？刷一下试试！">
-                        </el-form-item>
-                        <el-form-item>
-                            <el-button type="primary" @click="onSubmit">登陆</el-button>
-                            <el-button @click="clearForm">清除</el-button>
-                        </el-form-item>
-                    </el-form>
-                </el-card>
+                <div class="bg">
+
+                    <el-card class="box-card">
+                        <h5 class="title">
+                            <img src="../assets/img/login/logo.png" alt="">
+                        </h5>
+                        <span class="subtitle">xxx场馆管理系统</span>
+                        <el-form ref="form" :model="form" label-width="0px">
+                            <el-form-item label="">
+                                <el-input v-model="form.name" placeholder="用户名"></el-input>
+                            </el-form-item>
+                            <el-form-item label="">
+                                <el-input v-model="form.pwd" placeholder="密码" type="password"></el-input>
+                            </el-form-item>
+                            <el-form-item label="">
+                                <el-input v-model="form.valid" placeholder="验证码"
+                                          @keyup.enter.native="onSubmit"></el-input>
+                                <img id="validImg" :src="valImgSrc" alt="" width="100px" height="42px"
+                                     title="看不清？刷一下试试！" @click="getGenVerifyPic">
+                            </el-form-item>
+                            <br>
+                            <br>
+                            <el-form-item>
+                                <el-button type="primary" @click="onSubmit">登陆</el-button>
+                            </el-form-item>
+                        </el-form>
+                    </el-card>
+                </div>
             </el-main>
             <el-footer></el-footer>
         </el-container>
@@ -31,24 +38,35 @@
 </template>
 
 <script>
-    import { SignIn } from '../api/getApiRes.js'
+    import {
+        SignIn,
+        GenVerifyPic,
+        ManagerSelfQuery
+    } from "../api/getApiRes";
+
     let qs = require('qs');
     import Global from '../Global.js'
+
 
     export default {
         data() {
             return {
                 form: {
-                    name: 'test',
-                    pwd: '123456',
-                    valid: '1234',
+                    name: '',
+                    pwd: '',
+                    valid: '',
+                    picId: '',
                 },
-                valImgSrc: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPAAAABQCAMAAAAQlwhOAAAAP1BMVEUAAACcvA7J6TuszB6gwBKcvA6z0yXC4jSryx2+3jCy0iTG5ji72y3G5jievhCryx2dvQ+buw3N7T+21iioyBqdrAOEAAAAAXRSTlMAQObYZgAAA9BJREFUeJzsW2mP4yAMxT341FTVzP//r6tuJmAbm6sh0CRvpF0pTYDHM76amhMnWsBa23sJm8LagzE+Ce8eR+PbGVOPSa/Xa49p35gmhfGz4aTXa0/G8uXnsyHjroQ17FbhLtg9X2B/uwdQ7J0yhFDv/fn52XRtTVDG9/sZ/xkx+mtN+PXxCJ9BoPir3LoK4derL2PBhn9/I4zVgR65M36BwjmO+/EIGY/o7qNOar5DvifQ6cGfinmDfkgSliIzQOIkzps0YkSPhyEUtIKrL+rd0WeObNp6OiChAhiJ8EJVit2I7IiJKlwuF9Cz6HnVEmMAWWFgCo+m8eXyn7GaY8lCqQqTszukwozw4lndMpW9mC8ECvPdGV9hYDZsvVHjp1T/y0PRcArDfIaJdRr/r7X2/5IDpRTlpNtGY+y9MFf4fcnCYuK5CgfDN1x8DQJrNlhhCN2Sfyx39Cbrvt1uVc9ROpQZOF4B4cwcqp2Xvt0qGHuO6JKQRXIPbjIVrsm0cjeojrBgrLINBnadE2GhIpcOz46CcsJKKRPxvkt0IsavE68yZuRKEigWWHBEJuplmF3r/szQ+qFqVesXWmq1qk4EJHRxwjzbwKl0FecV3TsoFZ+fTn9uvkOMXHQMg89A8UE25Ph8hncdG+tFJBRmxix/X+EUNuQUlKwyJkrJOHOnIjJQTGEcoUnCzdaGtfljjYjMEnpa6gabqE/MwnwIX/oY0cgJvMpfaAb97OV/6+3bzS6lcDBNkx4y5imq6Ca9X8KM6Ek1gvvytAGWd0WwmyNxx9n8NCmM3aJrCEO6a5owofAwUsqBdJZthnJbjLC3jELjBjCKW+bLjxuAOCwqocGg4GUCL+eOv0F2miBMzk9BxSLeCqj6S7sIeTvAN4I4WNxarD0YYpqmBBXI7oL6syOPo3cfsxmjJXnlgLSJPg6ofNO024zPAeID5QicKpK0D9fpTy8BMOa107IFCicmje2I+vy6iTGgxqjUT9LPLxkiT+AMiZX8fM1KYPF9AFIdkzNVwWr4gE82kOTU1jBoYUTA5TPgy1nIfO+LLZ68Hyfvb4Nv1JCuBR6XIv1m31L50wyS8BX6Q62/UXM8i6dIKgxBKGTaAS6oDHaGTVu17UZHqQS6Qj52qRVpeYzWis8FyaAM9+60XKLHq++66wGUst6qH/r74SIIrSy55dH85G4GJqzRIv4uyDognrmF1vejeYTtCf0Npd3y7fx25MY4Ce8eR+N74sSJEydObI37/d57CZvifj8Y48EIt/8971iEt/jF9kh8j/cT9cMQ/hcAAP//l64Pg1y7/TYAAAAASUVORK5CYII=',
+                valImgSrc: '',
+                valImgId: '',
                 overtime: '',
+                userLevel: '',
+                userLevelText: '',
             }
         },
         mounted() {
             this.overtime = new Date();
+            this.getGenVerifyPic();
             // 如果是手动退出用户
             if (this.$route.query.status == 1) {
                 // 刷新验证图
@@ -58,21 +76,32 @@
             }
         },
         methods: {
+            getGenVerifyPic() {
+                let that = this;
+                let param = {
+                    token: localStorage.token,
+                    width: 100,
+                    height: 42,
+                    noiseCount: 10,
+                    length: 4,
+                    source: 123456789,
+                };
+                let postdata = qs.stringify(param);
+                GenVerifyPic(postdata).then(res => {
+                    let json = res;
+                    that.valImgSrc = json.Pic;
+                    that.valImgId = json.Id;
+                    that.form.picId = json.Id;
+                })
+            },
             //            点击验证码切换
             changeValImg: function () {
-                let that = this;
-                that.valImgSrc = that.valImgSrc + '?' + Math.random();
+                // 刷新验证图
+                this.getGenVerifyPic();
             },
             // 登陆
             onSubmit() {
                 this.pwdLoginBtn()
-            },
-            // 清除登陆
-            clearForm() {
-                this.form.name = '';
-                this.form.pwd = '';
-                this.form.valid = '';
-                this.changeValImg();
             },
             // 密码登陆
             pwdLoginBtn() {
@@ -86,6 +115,46 @@
                 if (!globalValid(userpwd, 5, 17, '密码', that)) return;
                 if (!globalValid(uservalid, 3, 5, '验证码', that)) return;
                 this.loginInfo();
+            },
+            getManagerSelfQuery() {
+                let that = this;
+                let param = {
+                    token: localStorage.token,
+                };
+                let postdata = qs.stringify(param);
+                ManagerSelfQuery(postdata).then(res => {
+                    let json = res;
+                    if (json.Code == 0) {
+                        that.userLevelText = json.Rs.Role.Name;
+                        // 1 会员 2 系统 3 店铺 4 教练
+                        that.userLevel = json.Rs.Role.Id;
+                        localStorage.shopId = json.Rs.ShopId;
+                        localStorage.ShopId = json.Rs.ShopId;
+
+                        switch (parseInt(that.userLevel)) {
+                            case 1:
+                                that.$router.push({path: '/'});
+                                break;
+                            case 2:
+                                that.$router.push({path: '/adminManage'});
+                                break;
+                            case 3:
+                                that.$router.push({path: '/'});
+                                break;
+                            case 4:
+                                that.$router.push({path: '/'});
+                                break;
+
+                        }
+                    } else {
+                        if (json.Code == 1010) {
+                            that.$message.error(json.Memo);
+                            that.$router.push({path: '/login', query: {status: 1}});
+                            return false
+                        }
+                        that.$message.error(json.Memo);
+                    }
+                })
             },
             // pwd登陆
             loginInfo: function () {
@@ -103,23 +172,21 @@
                     return false
                 }
                 let param = {
-                    'usercode': username,
-                    'passwd': userpwd,
-                    'vcode': uservalid,
-                    'logintype': 1,
-                    'accounttype': 3,
-                    'src': 'pc'
+                    verifyName: username,
+                    verifyCode: userpwd,
+                    picCode: uservalid,
+                    picId: this.form.picId,
+                    channel: 2
                 };
                 let postdata = qs.stringify(param);
                 SignIn(postdata).then(res => {
                     if (res.Code == 0) {
                         that.res = res.Rs;
-                        that.userName = res.Rs.userName;
-                        localStorage.userName = res.Rs.username;
+                        localStorage.userName = username;
                         localStorage.token = res.Rs.token;
-                        that.$router.push({path: '/'});
+                        this.getManagerSelfQuery();
                     } else {
-                        if (json.code == 10005) {
+                        if (res.Code == 10005) {
                             that.$refs.userpwd.value = '';
                             that.$notify({
                                 title: '警告',
@@ -129,9 +196,11 @@
                         } else {
                             that.$notify({
                                 title: '警告',
-                                message: json.memo,
+                                message: res.Memo + ',错误代码：' + res.Code,
                                 type: 'warning'
                             });
+                            that.form.valid = '';
+                            that.changeValImg();
                         }
                     }
                 })
@@ -147,7 +216,9 @@
         overflow: hidden;
         display: block;
         margin: 0 auto;
-        background: #333;
+        background-color: #F0F2F5;
+        background: url("../assets/img/login/bg.png") top center no-repeat;
+        background-size: 100% 100%;
     }
 
     .title {
@@ -158,22 +229,31 @@
         margin-bottom: 5px;
     }
 
+    .title img {
+        width: 362px;
+        overflow: hidden;
+        display: block;
+        margin: 0 auto;
+    }
+
     .subtitle {
         width: 100%;
         overflow: hidden;
         display: block;
         margin: 0 auto;
         text-align: center;
-        color: #fff;
-        margin-bottom: 40px;
-        font-size: 14px;
+        color: #414141;
+        margin-bottom: 79px;
+        font-size: 41px;
     }
 
     .box-card {
-        width: 400px;
+        width: 577px;
+        height: 733px;
         overflow: hidden;
-        display: block;
-        margin: 0 auto;
+        float: right;
+        margin-top: 40px;
+        margin-right: 10%;
     }
 
     .box-card .boxTitle {
@@ -184,6 +264,30 @@
     #validImg {
         position: relative;
         float: right;
-        bottom: 35px;
+        bottom: 52px;
+    }
+
+    /deep/ .el-form {
+        width: 422px;
+        overflow: hidden;
+        display: block;
+        margin: 0 auto;
+    }
+
+    /deep/ .el-input__inner {
+        height: 44px;
+        background: #F0F2F5;
+        border-radius: 0;
+        margin-bottom: 10px;
+    }
+
+    /deep/ .el-button--primary {
+        width: 100%;
+        height: 52px;
+        /*line-height: 32px;*/
+        overflow: hidden;
+        display: block;
+        margin: 0 auto;
+        font-size: 18px;
     }
 </style>
