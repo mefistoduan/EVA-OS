@@ -105,6 +105,13 @@ const routes = [
                 meta: {
                     title: "",
                 }
+            },{
+                path: '/warningPage',
+                name: 'WarningPage',
+                component: () => import('@/views/WarningPage.vue'),
+                meta: {
+                    title: "",
+                }
             },
         ]
     }, {
