@@ -23,8 +23,6 @@
                                 <img id="validImg" :src="valImgSrc" alt="" width="100px" height="42px"
                                      title="看不清？刷一下试试！" @click="getGenVerifyPic">
                             </el-form-item>
-                            <br>
-                            <br>
                             <el-form-item>
                                 <el-button type="primary" @click="onSubmit">登陆</el-button>
                             </el-form-item>
@@ -243,7 +241,7 @@
         margin: 0 auto;
         text-align: center;
         color: #414141;
-        margin-bottom: 79px;
+        margin-bottom: 10px;
         font-size: 41px;
     }
 
@@ -283,11 +281,19 @@
 
     /deep/ .el-button--primary {
         width: 100%;
-        height: 52px;
+        height: 50px;
         /*line-height: 32px;*/
         overflow: hidden;
         display: block;
         margin: 0 auto;
         font-size: 18px;
+    }
+    /deep/ .el-form-item {
+      margin-bottom: 9px;
+      max-height: 52px;
+      overflow: hidden;
+    }
+    /deep/ .el-form-item__content {
+      line-height: normal;
     }
 </style>

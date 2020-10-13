@@ -36,6 +36,12 @@ export function logout(postdata) {
 }
 
 
+export function TestClassPreFinishListQuery(postdata) {
+    let url = headapi + 'TestClassPreFinishListQuery';
+    return getApiBasic(url,postdata);
+}
+
+
 
 
 

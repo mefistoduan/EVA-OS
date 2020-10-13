@@ -112,6 +112,27 @@ const routes = [
                 meta: {
                     title: "",
                 }
+            },{
+                path: '/finish',
+                name: 'finish',
+                component: () => import('@/views/finish.vue'),
+                meta: {
+                    title: "",
+                }
+            },{
+                path: '/finishDetail',
+                name: 'finishDetail',
+                component: () => import('@/views/finishDetail.vue'),
+                meta: {
+                    title: "",
+                }
+            },{
+                path: '/3dColumn',
+                name: '3dColumn',
+                component: () => import('@/views/3dColumn.vue'),
+                meta: {
+                    title: "",
+                }
             },
         ]
     }, {
@@ -119,11 +140,11 @@ const routes = [
         name: 'Login',
         component: () => import( '../views/Login.vue')
     },
-   {
-        path: '*',
-        name: '404',
-        component: () => import( '../views/404.vue')
-    },
+   // {
+   //      path: '*',
+   //      name: '404',
+   //      component: () => import( '../views/404.vue')
+   //  },
 ]
 
 const originalPush = VueRouter.prototype.push;
@@ -145,7 +166,8 @@ router.beforeEach((to, from, next) => {
         next();
     } else {
         //如果token存在，就正常跳转，如果不存在，则说明未登陆，则跳转到'login'
-        isLogin ? next() : next("/login");
+        // isLogin ? next() : next("/login");
+        next()
     }
 });
 

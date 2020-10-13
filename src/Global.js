@@ -144,3 +144,24 @@ pageOptions = function () {
     return option
 };
 
+// 格式化时间去掉T
+nonTfmtDate = function (datetime, length) {
+    if ((datetime == '') || (datetime == undefined))
+        return '';
+    if ((datetime == '1900-01-01') || (datetime == '1900-01-01 00:00:00.000'))
+        return '';
+    length = !length ? 10 : length;//缺省参数
+    datetime = new Date(+new Date(datetime) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '');
+    return datetime
+};
+
+// 格式化时间去掉T
+nonTfmtDatetoLength = function (datetime, length) {
+    if ((datetime == '') || (datetime == undefined))
+        return '';
+    if ((datetime == '1900-01-01') || (datetime == '1900-01-01 00:00:00.000'))
+        return '';
+    length = !length ? 10 : length;//缺省参数
+    datetime = new Date(+new Date(datetime) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '').substr(0, length);
+    return datetime
+};
