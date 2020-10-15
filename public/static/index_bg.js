@@ -1,4 +1,7 @@
-var size = 9, res = 50, sizeres = size * res, halfsizeres = sizeres / 2;
+// todo 1.坐标轴  2.拖动视角 3.极限80*80 = 6400个点
+
+
+var size = 9, res = 40, sizeres = size * res, halfsizeres = sizeres / 2;
 var buffer1 = [], buffer2 = [], temp;
 var grid = [], plane;
 var scene, camera, light, renderer;
@@ -57,8 +60,8 @@ function init() {
     }
 
     for (var i = 0, l = res * res; i < l; i++) {
-        material = new THREE.MeshLambertMaterial({color: 0xd94d51});
-        // material = new THREE.MeshLambertMaterial({color: getColor()});
+        // material = new THREE.MeshLambertMaterial({color: 0xd94d51});
+        material = new THREE.MeshLambertMaterial({color: getColor()});
         cube = new THREE.Mesh(geometry, material);
         cube.position.x = size + ((i % res) * 10);
         cube.position.z = size + (Math.floor(i / res) * 10);
@@ -103,8 +106,55 @@ function init() {
     ray = new THREE.Ray(camera.position);
 
     document.addEventListener('mousemove', onDocumentMouseMove, false);
-
+    document.addEventListener( 'mousedown', onMouseDown, false );
+    document.addEventListener( 'mouseup', onMouseup, false );
 }
+
+var rotateStart;
+rotateStart = new THREE.Vector2();
+
+/*
+    鼠标移动控制模型旋转思想：
+    当按下鼠标时及时当前鼠标的水平坐标clientX1，在鼠标移动的过程中不断触发onMouseMove事件，
+    不停的记录鼠标的当前坐标clientX2，由当前坐标减去记录的上一个水平坐标，
+    并且将当前的坐标付给上一个坐标clientX1，计算两个坐标的之间的差clientX2-clientX1，
+    将得到的差值除以一个常量（这个常量可以根据自己的需要调整），得到旋转的角度
+*/
+function onMouseDown(event){
+    event.preventDefault();
+    mouseDown = true;
+    mouseX = event.clientX;//出发事件时的鼠标指针的水平坐标
+
+    rotateStart.set( event.clientX, event.clientY );
+    document.addEventListener( 'mousemove', onMouseMove2, false );
+}
+
+function onMouseup(event){
+    mouseDown = false;
+
+    document.removeEventListener("mousemove", onMouseMove2);
+}
+
+function onMouseMove2(event){
+    if(!mouseDown){
+        return;
+    }
+    var deltaX = event.clientX - mouseX;
+    mouseX = event.clientX;
+    rotateScene(deltaX);
+}
+
+//设置模型旋转速度，可以根据自己的需要调整
+function rotateScene(deltaX){
+    //设置旋转方向和移动方向相反，所以加了个负号
+    var deg = -deltaX/279;
+    //deg 设置模型旋转的弧度
+    scene.rotation.y += 130;
+    render();
+}
+
+
+
 
 function onDocumentMouseMove(event) {
 
@@ -119,18 +169,14 @@ function onDocumentMouseMove(event) {
 }
 
 function animate() {
-
     requestAnimationFrame(animate);
-
     render();
     stats.update();
 
 }
 
 function render() {
-
     if (intersects.length) {
-
         var point = intersects[0].point;
         var x = Math.floor(point.x / size);
         var y = Math.floor(point.z / size);
