@@ -21,6 +21,28 @@ let worldDetail = function () {
     return res;
 };
 
+let TestClassPreFinishListQuery = function () {
+    let item = [];
+    for (var i = 0; i < 30; i++) {
+        item.push({
+            "id": "@guid",
+            "ClassName": "@region",
+            "EndTime": "@date",
+            "ClassColor": "@color",
+            "ConsumeHour": "@integer(36844, 368449)",
+            "Deaths": "@integer(1099, 10993)",
+            "Recovered": "@integer(1986, 19865)",
+        })
+    }
+
+    let res = {
+        Rs: item,
+        Code: 0,
+        Memo: ''
+    };
+    return res;
+};
+
 let SignIn = function () {
 
     let Rs = {
@@ -63,5 +85,7 @@ Mock.mock('/api/SignIn', 'post', SignIn());//用户登录
 Mock.mock('/api/editbasicinfo', 'post', editbasicinfo());//用户设置修改
 Mock.mock('/api/modPwd', 'post', modPwd());//密码修改
 Mock.mock('/api/logout', 'post', logout());//退出登陆
+// test
+Mock.mock('/api/TestClassPreFinishListQuery', 'post', TestClassPreFinishListQuery());//退出登陆
 
 export default Mock;

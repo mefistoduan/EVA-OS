@@ -1,0 +1,188 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>threejs鼠标移动控制模型旋转</title>
+
+</head>
+
+<body>
+<div class="container">
+    1234
+</div>
+<script src="js/threejs/three.js"></script>
+<script src="../static/jquery-1.12.4.min.js"></script>
+<script src="../static/Detector.js"></script>
+<script src="../static/RequestAnimationFrame.js"></script>
+<script src="../static/Stats.js"></script>
+<script src="../static/Three.min.js"></script>
+<script>
+    var camera, scene, renderer, geometry, material, mesh;
+    var pivot5, pivot6;
+
+    init();
+
+    function init() {
+
+        scene = new THREE.Scene();
+
+        camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 10000);
+        camera.position.z = 500;
+        camera.position.y = 100;
+        scene.add(camera);
+
+        //坐标轴辅助
+        var axes = new THREE.AxisHelper(500);
+        scene.add(axes);
+
+        renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setClearColor( 0xffffcc );
+        renderer.setPixelRatio( window.devicePixelRatio );
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        //添加环境光
+        var ambient = new THREE.AmbientLight( 0x444444 );
+        scene.add( ambient );
+
+        // 添加定向光线
+        var directionalLight = new THREE.DirectionalLight( 0xffeedd );
+        directionalLight.position.set( 0, 0, 1 ).normalize();
+        scene.add( directionalLight );
+
+        var onProgress = function ( xhr ) {
+            if ( xhr.lengthComputable ) {
+                var percentComplete = xhr.loaded / xhr.total * 100;
+                console.log( Math.round(percentComplete, 2) + '% downloaded' );
+            }
+        };
+
+        //加载obj 、材质、贴图
+        var onError = function ( xhr ) { };
+
+        THREE.Loader.Handlers.add( /\.dds$/i, new THREE.DDSLoader() );
+
+        var texture = new THREE.Texture();
+        var loader = new THREE.OBJLoader();
+        loader.setPath( 'models/' );
+        pivot5 = new THREE.Object3D();
+        //导入obj模型
+        loader.load( 'tree.obj', function ( object ) {
+
+            object.traverse( function ( child ) {
+
+                if ( child instanceof THREE.Mesh ) {
+
+                    child.material.map = texture;
+                    //将模型放大40倍
+                    var n=40;
+                    child.scale.x =n;
+                    child.scale.y =n;
+                    child.scale.z =n;
+                }
+
+            } );
+
+            pivot5.position.x = -100;
+            pivot5.position.z = 100;
+
+            object.position.x = 0;
+            object.position.z = 0;
+
+            object.position.y = 50;
+            //scene.add( object );
+            pivot5.add(object);
+
+        }, onProgress, onError );
+
+        //导入贴图
+        var cubemtlLoader = new THREE.MTLLoader();
+        cubemtlLoader.setPath( 'models/' );
+        pivot6 = new THREE.Object3D();
+
+        cubemtlLoader.load( 'cube.mtl', function( materials ) {
+
+
+            materials.preload();
+
+            var objLoader = new THREE.OBJLoader();
+            objLoader.setMaterials( materials );
+            objLoader.setPath( 'models/' );
+            objLoader.load( 'cube.obj', function ( object ) {
+                var n= 20;
+                object.scale.x =n;
+                object.scale.y =n;
+                object.scale.z =n;
+                //修改旋转轴的坐标点，默认是(0,0,0);
+                pivot6.position.x = 100;
+                pivot6.position.z = 100;
+
+                object.position.x = 0;
+                object.position.z = 0;
+
+                object.position.y = 100;
+                pivot6.add(object);
+                render();
+
+            }, onProgress, onError );
+        });
+
+        scene.add(pivot5);
+        scene.add(pivot6);
+
+        document.body.appendChild(renderer.domElement);
+        document.addEventListener( 'mousedown', onMouseDown, false );
+        document.addEventListener( 'mouseup', onMouseup, false );
+
+    }
+
+    var rotateStart;
+    rotateStart = new THREE.Vector2();
+
+    /*
+        鼠标移动控制模型旋转思想：
+        当按下鼠标时及时当前鼠标的水平坐标clientX1，在鼠标移动的过程中不断触发onMouseMove事件，
+        不停的记录鼠标的当前坐标clientX2，由当前坐标减去记录的上一个水平坐标，
+        并且将当前的坐标付给上一个坐标clientX1，计算两个坐标的之间的差clientX2-clientX1，
+        将得到的差值除以一个常量（这个常量可以根据自己的需要调整），得到旋转的角度
+    */
+    function onMouseDown(event){
+        event.preventDefault();
+        mouseDown = true;
+        mouseX = event.clientX;//出发事件时的鼠标指针的水平坐标
+
+        rotateStart.set( event.clientX, event.clientY );
+        document.addEventListener( 'mousemove', onMouseMove2, false );
+    }
+
+    function onMouseup(event){
+        mouseDown = false;
+
+        document.removeEventListener("mousemove", onMouseMove2);
+    }
+
+    function onMouseMove2(event){
+        if(!mouseDown){
+            return;
+        }
+        var deltaX = event.clientX - mouseX;
+        mouseX = event.clientX;
+        rotateScene(deltaX);
+    }
+
+    //设置模型旋转速度，可以根据自己的需要调整
+    function rotateScene(deltaX){
+        //设置旋转方向和移动方向相反，所以加了个负号
+        var deg = -deltaX/279;
+        //deg 设置模型旋转的弧度
+        pivot5.rotation.y += deg;
+        pivot6.rotation.y += deg;
+        render();
+    }
+
+    function render() {
+        renderer.render(scene, camera);
+    }
+
+</script>
+</body>
+</html>
