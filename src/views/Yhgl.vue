@@ -23,8 +23,8 @@
                             </el-date-picker>
                         </el-col>
                         <el-col :span="4">
-                            <em>用户账号:</em>
-                            <el-input v-model="panel.USERCODE" placeholder="请输入用户账号"></el-input>
+                            <em>手机号:</em>
+                            <el-input v-model="panel.USERCODE" placeholder="请输入用户手机号"  type="number" ></el-input>
                         </el-col>
                         <el-col :span="4">
                             <em>关键词:</em>

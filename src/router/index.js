@@ -133,6 +133,20 @@ const routes = [
                 meta: {
                     title: "",
                 }
+            },{
+                path: '/camera',
+                name: 'camera',
+                component: () => import('@/views/camera.vue'),
+                meta: {
+                    title: "",
+                }
+            },{
+                path: '/grpc',
+                name: 'grpc',
+                component: () => import('@/views/grpc.vue'),
+                meta: {
+                    title: "",
+                }
             },
         ]
     }, {

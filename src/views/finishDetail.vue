@@ -249,7 +249,7 @@
         mounted() {
             this.BeginTime = nonTfmtDatetoLength(this.$route.query.BeginTime, 16);
             this.ClassName = this.$route.query.ClassName;
-            this.getTableQuery();
+            // this.getTableQuery();
             // 获取教练选项
             // this.getCoachOption();
         },

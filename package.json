@@ -1,5 +1,5 @@
 {
-  "name": "new_back",
+  "name": "eva_os",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,8 +10,11 @@
     "core-js": "^3.6.5",
     "echarts": "^4.8.0",
     "element-ui": "^2.13.2",
+    "grpc-web": "^1.2.0",
     "mockjs": "^1.1.0",
     "nprogress": "^0.2.0",
+    "postcss-loader": "^4.0.4",
+    "postcss-pxtorem": "^5.1.1",
     "qs": "^6.9.4",
     "three-css2drender": "^1.0.0",
     "three-obj-mtl-loader": "^1.0.3",

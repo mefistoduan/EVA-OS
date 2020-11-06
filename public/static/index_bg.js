@@ -1,7 +1,7 @@
 // todo 1.坐标轴  2.拖动视角 3.极限80*80 = 6400个点
 
 
-var size = 9, res = 40, sizeres = size * res, halfsizeres = sizeres / 2;
+var size = 9, res = 10, sizeres = size * res, halfsizeres = sizeres / 2;
 var buffer1 = [], buffer2 = [], temp;
 var grid = [], plane;
 var scene, camera, light, renderer;
@@ -55,7 +55,6 @@ function init() {
             //字符串相加后，得出的仍是字符串
             color+=colorArray[Math.floor(Math.random()*16)];
         }
-        console.log(color);
         return color;
     }
 
@@ -68,6 +67,10 @@ function init() {
         cube.scale.y = Math.random() * 5;
         cube.castShadow = true;
         cube.receiveShadow = true;
+
+        // text
+
+
         scene.add(cube);
         grid.push(cube);
     }
@@ -124,14 +127,12 @@ function onMouseDown(event){
     event.preventDefault();
     mouseDown = true;
     mouseX = event.clientX;//出发事件时的鼠标指针的水平坐标
-
     rotateStart.set( event.clientX, event.clientY );
     document.addEventListener( 'mousemove', onMouseMove2, false );
 }
 
 function onMouseup(event){
     mouseDown = false;
-
     document.removeEventListener("mousemove", onMouseMove2);
 }
 
@@ -153,9 +154,6 @@ function rotateScene(deltaX){
     render();
 }
 
-
-
-
 function onDocumentMouseMove(event) {
 
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
@@ -174,6 +172,39 @@ function animate() {
     stats.update();
 
 }
+
+// 加载文字
+function loadTextFamily() {
+    var textLoader = new THREE.FontLoader()
+    textLoader.load(
+        'PingFang_SC_Regular_Regular.json',
+        function (font) {
+            fontFamily = font;
+            var t = 0;
+            for (var i = 0; i <= buildFloor; i++) {
+                t = i + 1;
+                createText(t + '层', [500, 400 * (i), 600]);
+            }
+        }
+    );
+}
+function createText(text, pos) {
+    var options = {
+        size: 80,
+        height: 0,
+        font: fontFamily, // “引用js字体必须换成英文”
+        bevelThickness: 1,
+        bevelSize: 1,
+        bevelSegments: 1,
+        curveSegments: 50,
+        steps: 1
+    }
+    var textGeo = new THREE.TextGeometry(text, options);
+    var textMesh = new THREE.Mesh(textGeo, new THREE.MeshBasicMaterial())
+    textMesh.position.set(pos[0], pos[1], pos[2]);
+    scene.add(textMesh);
+}
+loadTextFamily();
 
 function render() {
     if (intersects.length) {

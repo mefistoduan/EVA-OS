@@ -278,7 +278,7 @@ export default {
         return index < that.pageination.pageItem;
       });
       that.draw = that.pageination.pageItem;
-      that.getTableQuery();
+      // that.getTableQuery();
     },
     // 翻页
     pageChange(pageIndex) {
@@ -296,7 +296,7 @@ export default {
         this.tableData = tables;
       }
       that.start = index * that.draw;
-      that.getTableQuery();
+      // that.getTableQuery();
     },
     // 过滤时间
     filterFmtDate(value, row, column) {
