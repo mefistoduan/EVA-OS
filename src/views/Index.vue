@@ -30,7 +30,7 @@
         name: 'Home',
         data() {
             return {
-                isCollapse: true,
+                isCollapse: false,
                 aSideState: false,
                 thisClick: 0,
                 tabwildState: 1,

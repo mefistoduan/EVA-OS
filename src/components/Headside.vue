@@ -50,8 +50,8 @@
                 tel: '0000-0000-000',
                 qq: '000000000',
                 newnum: '',
-                newnumState: false,
-                left_panel_state: false
+                newnumState: true,
+                left_panel_state: true
             }
         },
         mounted() {
