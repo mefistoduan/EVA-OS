@@ -16,7 +16,7 @@
                 >
                     <el-submenu :index="nav.clmid" :route="nav.clmurl" v-for="nav in navs">
                         <template slot="title">
-                            <i class="el-icon-location"></i>
+                            <i :class="nav.clicon"></i>
                             <span>{{nav.clmname}}</span>
                         </template>
                         <el-menu-item-group v-for="(child,j) in nav.childs">

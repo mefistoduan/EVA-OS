@@ -71,13 +71,7 @@
             left_hide: function () {
                 let that = this;
                 that.left_panel_state = !that.left_panel_state;
-                console.log(223);
                 this.$emit('lefthide');
-                // if (!that.left_panel_state) {
-                //     this.$emit('left_hide_func');
-                // } else {
-                //     this.$emit('right_hide_func');
-                // }
             },
 //            打开消息提示
             checkNews: function () {

@@ -11,7 +11,7 @@ let navs = [{
     "show": "1",
     "grouplist": "2,5",
     "memo": "",
-    "icon": "icon-home",
+    "clicon": "el-icon-s-home",
     "childs": [
         {
             "clmid": "11",
@@ -42,7 +42,7 @@ let navs = [{
     "show": "1",
     "grouplist": "2,5",
     "memo": "",
-    "clicon": "front_icon",
+    "clicon": "el-icon-help",
     "childs": [
         {
             "clmid": "21",
@@ -116,7 +116,7 @@ let navs = [{
         "show": "1",
         "grouplist": "2,5",
         "memo": "",
-        "clicon": "front_icon",
+        "clicon": "el-icon-s-order",
         "childs": [
             {
                 "clmid": "31",
@@ -233,7 +233,7 @@ let navs = [{
         "show": "1",
         "grouplist": "2,5",
         "memo": "",
-        "clicon": "front_icon",
+        "clicon": "el-icon-s-order",
         "childs": [
             {
                 "clmid": "41",
@@ -280,7 +280,7 @@ let navs = [{
         "show": "1",
         "grouplist": "2,5",
         "memo": "",
-        "clicon": "front_icon",
+        "clicon": "el-icon-s-order",
         "childs": [
             {
                 "clmid": "51",
@@ -341,7 +341,7 @@ let navs = [{
         "show": "1",
         "grouplist": "2,5",
         "memo": "",
-        "clicon": "front_icon",
+        "clicon": "el-icon-s-order",
         "childs": [
             {
                 "clmid": "61",
