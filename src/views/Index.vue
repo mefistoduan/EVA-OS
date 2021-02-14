@@ -21,7 +21,6 @@
 </template>
 
 <script>
-    // @ is an alias to /src
     import Headside from '@/components/Headside.vue'
     import Navside from '@/components/Navside.vue'
     // import Tabs from '@/components/Tabs.vue'

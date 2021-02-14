@@ -44,7 +44,6 @@
 
 <script>
 import global from '../Global'
-import '../libs/rem';
 
 export default {
   data() {
