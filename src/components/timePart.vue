@@ -92,8 +92,8 @@ em, s, i {
 }
 
 .timePart {
-  width: 15rem;
-  height: 12rem;
+  width: 400px;
+  height: 200px;
   overflow: hidden;
   display: block;
   margin: 0 auto;
@@ -101,13 +101,13 @@ em, s, i {
 }
 
 .timePart .lt {
-  width: 10rem;
+  width: 300px;
   overflow: hidden;
   float: left;
 }
 
 .timePart .rt {
-  width: 5rem;
+  width: 100px;
   overflow: hidden;
   float: right;
 }
@@ -117,14 +117,14 @@ em, s, i {
   overflow: hidden;
   display: block;
   margin: 0 auto;
-  font-size: 1.2rem;
+  font-size: 14px;
   font-weight: normal;
   color: #01355B;
   text-align: left;
 }
 
 .timePart .lt s {
-  font-size: 0.4rem;
+  font-size: 14px;
 }
 
 .timePart .lt p {
@@ -132,13 +132,13 @@ em, s, i {
   overflow: hidden;
   display: block;
   margin: 0 auto;
-  font-size: 3rem;
+  font-size: 60px;
   color: #01355B;
   text-align: left;
   font-family: UniDreamLED;
   letter-spacing: 3px;
-  margin-top: 0.6rem;
-  margin-bottom: 0.6rem;
+  margin-top: 3px;
+  margin-bottom: 3px;
 }
 
 .timePart .lt span {
@@ -146,7 +146,7 @@ em, s, i {
   overflow: hidden;
   display: block;
   margin: 0 auto;
-  font-size: 1rem;
+  font-size: 14px;
   text-align: right;
   font-family: UniDreamLED;
 }
@@ -160,15 +160,15 @@ em, s, i {
 
 .timePart .lt li {
   width: 23%;
-  height: 1.2rem;
+  height: 40px;
   background: #01355B;
   color: #fff;
   text-align: center;
   float: left;
-  margin-right: 0.2rem;
-  font-size: 0.4rem;
-  padding-top: 0.3rem;
-  padding-bottom: 0.3rem;
+  margin-right:2px;
+  font-size:14px;
+  padding-top:12px;
+  padding-bottom:12px;
 }
 
 .timePart .lt li:nth-child(4) {
@@ -180,14 +180,14 @@ em, s, i {
   overflow: hidden;
   display: block;
   margin: 0 auto;
-  margin-top: 0.2rem;
-  height: 0.2rem;
+  margin-top:12px;
+  height:12px;
   background: #fff;
 }
 
 .rt .top {
   width: 100%;
-  height: 3rem;
+  height: 50px;
   overflow: hidden;
   display: block;
   margin: 0 auto;
@@ -196,19 +196,19 @@ em, s, i {
 }
 
 .rt .top h5 {
-  width: 4rem;
-  font-size: 2rem;
+  width: 40px;
+  font-size: 20px;
   margin: 0;
   float: left;
   text-align: left;
-  padding-left: 2rem;
+  padding-left: 20px;
 }
 
 .rt .top s {
   float: left;
-  font-size: 0.8rem;
+  font-size: 0.80px;
   text-align: left;
-  padding-left: 1.2rem;
+  padding-left: 1.20px;
 }
 
 .rt .top i {
@@ -229,8 +229,8 @@ em, s, i {
   overflow: hidden;
   display: block;
   margin: 0 auto;
-  margin-top: 0.6rem;
-  margin-bottom: 0.6rem;
+  margin-top:5px;
+  margin-bottom:5px;
   background: #01355B;
   color: #fff;
   padding-top: 3px;
