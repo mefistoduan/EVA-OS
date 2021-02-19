@@ -104,7 +104,7 @@
         float: left;
     }
     .lognElaside {
-        width: 320px!important;
+        width: 220px!important;
         overflow: hidden;
         height: 100%;
         float: left;

@@ -107,7 +107,7 @@ export default {
 
 .longNav {
   position: absolute;
-  width: 320px;
+  width: 220px;
   top: 48px;
   bottom: 0;
   overflow: hidden;
