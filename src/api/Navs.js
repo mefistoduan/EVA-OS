@@ -162,53 +162,6 @@ let navs = [ {
         ]
     },
     {
-        "clmid": "4",
-        "spclmid": "0",
-        "ordno": "1",
-        "c_level": "1",
-        "clmcode": "index",
-        "clmname": "业务管理",
-        "clmurl": "",
-        "prname": "",
-        "en": "1",
-        "show": "1",
-        "grouplist": "2,5",
-        "memo": "",
-        "clicon": "el-icon-s-order",
-        "childs": [
-            {
-                "clmid": "41",
-                "spclmid": "0",
-                "ordno": "0",
-                "c_level": "2",
-                "clmcode": "front_index",
-                "clmname": "任务查询",
-                "clmurl": "/rwcx",
-                "prname": null,
-                "en": "1",
-                "show": "1",
-                "grouplist": "2,5",
-                "memo": null,
-                "clicon": "home_icon"
-            },
-            {
-                "clmid": "42",
-                "spclmid": "0",
-                "ordno": "0",
-                "c_level": "2",
-                "clmcode": "front_index",
-                "clmname": "分级查询",
-                "clmurl": "/fjcx",
-                "prname": null,
-                "en": "1",
-                "show": "1",
-                "grouplist": "2,5",
-                "memo": null,
-                "clicon": "home_icon"
-            },
-        ]
-    },
-    {
         "clmid": "5",
         "spclmid": "0",
         "ordno": "1",
@@ -223,21 +176,6 @@ let navs = [ {
         "memo": "",
         "clicon": "el-icon-s-order",
         "childs": [
-            {
-                "clmid": "51",
-                "spclmid": "0",
-                "ordno": "0",
-                "c_level": "2",
-                "clmcode": "front_index",
-                "clmname": "系统消息",
-                "clmurl": "/news",
-                "prname": null,
-                "en": "1",
-                "show": "1",
-                "grouplist": "2,5",
-                "memo": null,
-                "clicon": "home_icon"
-            },
             {
                 "clmid": "52",
                 "spclmid": "0",
