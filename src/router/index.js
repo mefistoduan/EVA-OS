@@ -147,6 +147,13 @@ const routes = [
                 meta: {
                     title: "",
                 }
+            },{
+                path: '/webscoket',
+                name: 'webscoket',
+                component: () => import('@/views/webscoket.vue'),
+                meta: {
+                    title: "",
+                }
             },
         ]
     }, {
