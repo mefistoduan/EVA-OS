@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="context">
         <el-button type="success" @click="toggle">click me</el-button>
         <Hand :state="state"></Hand>
     </div>
@@ -25,7 +25,7 @@
 </script>
 
 <style scoped>
-    .container {
+    .context {
         height: 100%;
         padding: 35px;
         overflow: hidden;

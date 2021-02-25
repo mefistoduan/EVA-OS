@@ -19,7 +19,7 @@ const routes = [
     {
         path: '/',
         name: 'Index',
-        component: () => import( '../views/Index.vue'),
+        component: () => import('../views/Index.vue'),
         children: [
             {
                 path: '/',
@@ -84,73 +84,80 @@ const routes = [
                 meta: {
                     title: "上传文件",
                 }
-            },{
+            }, {
                 path: '/timePage',
                 name: 'TimePage',
                 component: () => import('@/views/TimePage.vue'),
                 meta: {
                     title: "",
                 }
-            },{
+            }, {
                 path: '/handPage',
                 name: 'HandPage',
                 component: () => import('@/views/HandPage.vue'),
                 meta: {
                     title: "",
                 }
-            },{
+            }, {
                 path: '/radarPage',
                 name: 'RadarPage',
                 component: () => import('@/views/RadarPage.vue'),
                 meta: {
                     title: "",
                 }
-            },{
+            }, {
                 path: '/warningPage',
                 name: 'WarningPage',
                 component: () => import('@/views/WarningPage.vue'),
                 meta: {
                     title: "",
                 }
-            },{
+            }, {
                 path: '/finish',
                 name: 'finish',
                 component: () => import('@/views/finish.vue'),
                 meta: {
                     title: "",
                 }
-            },{
+            }, {
                 path: '/finishDetail',
                 name: 'finishDetail',
                 component: () => import('@/views/finishDetail.vue'),
                 meta: {
                     title: "",
                 }
-            },{
+            }, {
                 path: '/3dColumn',
                 name: '3dColumn',
                 component: () => import('@/views/3dColumn.vue'),
                 meta: {
                     title: "",
                 }
-            },{
+            }, {
                 path: '/camera',
                 name: 'camera',
                 component: () => import('@/views/camera.vue'),
                 meta: {
                     title: "",
                 }
-            },{
+            }, {
                 path: '/grpc',
                 name: 'grpc',
                 component: () => import('@/views/grpc.vue'),
                 meta: {
                     title: "",
                 }
-            },{
+            }, {
                 path: '/webscoket',
                 name: 'webscoket',
                 component: () => import('@/views/webscoket.vue'),
+                meta: {
+                    title: "",
+                }
+            }, {
+                path: '/animate_card',
+                name: 'animate_card',
+                component: () => import('@/views/animate/card.vue'),
                 meta: {
                     title: "",
                 }
@@ -159,12 +166,12 @@ const routes = [
     }, {
         path: '/login',
         name: 'Login',
-        component: () => import( '../views/Login.vue')
+        component: () => import('../views/Login.vue')
     },
-   {
+    {
         path: '*',
         name: '404',
-        component: () => import( '../views/404.vue')
+        component: () => import('../views/404.vue')
     },
 ]
 
