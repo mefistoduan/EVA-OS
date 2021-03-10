@@ -1,43 +1,75 @@
 <template>
   <div class="container">
     <div class="top">
-      <el-row :gutter="20">
-        <el-col :span="6">
-          <div class="grid-content">
-            <i class="el-icon-user"></i>
-            <h5>今日新增</h5>
-            <span>231</span>
-          </div></el-col
-        >
-        <el-col :span="6">
-          <div class="grid-content">
-            <i class="el-icon-user"></i>
-            <h5>今日新增</h5>
-            <span>231</span>
-          </div></el-col
-        >
-        <el-col :span="6">
-          <div class="grid-content">
-            <i class="el-icon-user"></i>
-            <h5>今日新增</h5>
-            <span>231</span>
-          </div></el-col
-        >
-        <el-col :span="6">
-          <div class="grid-content">
-            <i class="el-icon-user"></i>
-            <h5>今日新增</h5>
-            <span>231</span>
-          </div></el-col
-        >
-      </el-row>
+      <ul>
+        <li @click="goPage('member')">
+          <div class="liRight">
+            <h5>会员人数</h5>
+            <span>{{ AllCount }}</span>
+          </div>
+          <div class="btLine">
+            <em class="emlt">
+              <i class="el-icon-caret-top"></i>
+              今日新增 {{ NowCount }}
+            </em>
+            <em class="emrt">
+              <i class="el-icon-caret-top"></i>
+              昨日新增 {{ YesterdayCount }}
+            </em>
+          </div>
+        </li>
+        <li @click="goPage('record')">
+          <div class="liRight">
+            <h5>今日预约人数</h5>
+            <span>{{ TodayOrderNum }}</span>
+          </div>
+          <div class="btLine">
+            <em class="emlt">
+              <i class="el-icon-caret-top"></i>
+              昨日预约 {{ YestodayOrderNum }}
+            </em>
+            <em class="emrt">
+              <i class="el-icon-caret-top"></i>
+              较昨日新增 {{ TodayIncreaseNum }}
+            </em>
+          </div>
+        </li>
+        <li @click="goPage('lesson')" v-if="userLevel != 3">
+          <div class="liRight">
+            <h5>课程数量</h5>
+            <span>{{ ClassNum }}</span>
+          </div>
+          <div class="btLine">
+            <em class="emlt">
+              <i class="el-icon-caret-top"></i>
+              已预约课程 {{ TodayOrderSttNum }}
+            </em>
+          </div>
+        </li>
+        <li @click="goPage('lesson')" v-if="userLevel == 3">
+          <div class="liRight">
+            <h5>剩余课时</h5>
+            <span>{{ TotalRemainNormalhour + TotalRemainGifthour }}</span>
+          </div>
+          <div class="btLine">
+            <em class="emlt">
+              <i class="el-icon-caret-top"></i>
+              正常课时 {{ TotalRemainNormalhour }}
+            </em>
+            <em class="emlt">
+              <i class="el-icon-caret-top"></i>
+              赠送课时 {{ TotalRemainGifthour }}
+            </em>
+          </div>
+        </li>
+      </ul>
     </div>
     <div class="middle">
       <ve-histogram
-        :data="chartData"
-        height="350px"
-        :legend-visible="false"
-        :extend="chartExtend"
+          :data="chartData"
+          height="350px"
+          :legend-visible="false"
+          :extend="chartExtend"
       ></ve-histogram>
     </div>
     <div class="bottom">
@@ -45,8 +77,8 @@
         <el-col :span="6">
           <el-card :body-style="{ padding: '0px' }">
             <img
-              src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
-              class="image"
+                src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
+                class="image"
             />
             <div style="padding: 14px">
               <span>好吃的汉堡</span>
@@ -64,7 +96,7 @@
               </el-table-column>
               <el-table-column prop="name" label="姓名" width="180">
               </el-table-column>
-              <el-table-column prop="address" label="地址"> </el-table-column>
+              <el-table-column prop="address" label="地址"></el-table-column>
             </el-table>
           </el-card>
         </el-col>
@@ -196,30 +228,24 @@ export default {
 };
 </script>
 
-<style scoped>
-.top .grid-content {
-  width: 90%;
-  height: 70px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 15px 20px;
-}
-.top h5 {
-  font-size: 18px;
-  float: right;
-  text-align: right;
+<style lang="scss" scoped>
+ul,
+li {
+  list-style: none;
   margin: 0;
+  padding: 0;
 }
-.top i {
-  font-size: 18px;
-  float: left;
+
+em {
+  font-style: normal;
 }
-.top span {
+
+.container {
   width: 100%;
-  float: right;
+  overflow: hidden;
+  overflow-y: scroll;
   display: block;
   margin: 0 auto;
-  text-align: right;
-  font-size: 40px;
+  padding-bottom: 60px;
 }
 </style>
