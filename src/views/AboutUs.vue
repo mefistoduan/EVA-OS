@@ -1,10 +1,12 @@
 <template>
-            <div class="content">
-                <br>
-                <br>
-                <div class="text">
-                    <p>xxxx平台用户使用协议</p>
-                    <span>
+  <div class="content">
+    <br>
+    <br>
+    <br>
+    <!--<img src="../../static/images/comm/logo.png" alt="">-->
+    <div class="text">
+      <p>xxxx平台用户使用协议</p>
+      <span>
                         欢迎使用xxxx平台平台系统，本系统是由济南市xxx有限公司自行设计开发并拥有独立自主知识产权的移动客户关系管理平台，并集成了各类通信运营商的通信通道资源，通过web页面以及客户端等模式向客户提供服务。
                         <br><br>
                         其面向的使用对象是能够承担相应法律责任的公司或个人，若您不具备此资格，请不要使用我们提供的服务。
@@ -15,37 +17,63 @@
                          <br><br>
                         本协议由xxxx有限公司（以下简称“xxx”）与您在xxxx签署。
                     </span>
-                </div>
-            </div>
+    </div>
+  </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {}
+  },
+  mounted() {
+    // this.testAsync();
+  },
+  methods: {
+    // testAsync() {
+    //   this.run(1).then(function (a) {
+    //     console.log('a', a);
+    //   })
+    // },
+    // async run(t) {
+    //   console.log('t', t);
+    //   return t + 1;
+    // },
+  },
+  components: {}
+}
+</script>
+
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
-    .content img {
-        overflow: hidden;
-        display: block;
-        margin: 0 auto;
-        margin-bottom: 44px;
-    }
-    .text {
-        overflow: hidden;
-        display: block;
-        margin: 0 auto;
-        background: #F8F8F8;
-        padding: 30px 70px;
-        font-size: 12px;
-       p {
-        width: 100%;
-        overflow: hidden;
-        display: block;
-        margin: 0 auto;
-        margin-bottom: 44px;
-        text-align: center;
-        font-size: 18px;
-        color: #000000;
-      }
-      span {
-        font-size: 12px;
-      }
-    }
+<style scoped>
+.content img {
+  overflow: hidden;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 44px;
+}
+
+.text {
+  overflow: hidden;
+  display: block;
+  margin: 0 auto;
+  background: #F8F8F8;
+  padding: 30px 70px;
+  font-size: 12px;
+}
+
+.text p {
+  width: 100%;
+  overflow: hidden;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 44px;
+  text-align: center;
+  font-size: 18px;
+  color: #000000;
+}
+
+.text span {
+  font-size: 12px;
+}
 </style>
