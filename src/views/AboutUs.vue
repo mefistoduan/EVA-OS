@@ -2,8 +2,6 @@
             <div class="content">
                 <br>
                 <br>
-                <br>
-                <!--<img src="../../static/images/comm/logo.png" alt="">-->
                 <div class="text">
                     <p>xxxx平台用户使用协议</p>
                     <span>
@@ -21,26 +19,8 @@
             </div>
 </template>
 
-<script>
-export default {
-    data () {
-    return {
-    }
-    },
-    mounted() {
-
-    },
-    methods: {
-
-    },
-    components: {
-
-    }
-}
-</script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss" scoped>
     .content img {
         overflow: hidden;
         display: block;
@@ -54,8 +34,7 @@ export default {
         background: #F8F8F8;
         padding: 30px 70px;
         font-size: 12px;
-    }
-    .text p {
+       p {
         width: 100%;
         overflow: hidden;
         display: block;
@@ -64,8 +43,9 @@ export default {
         text-align: center;
         font-size: 18px;
         color: #000000;
-    }
-    .text span {
+      }
+      span {
         font-size: 12px;
+      }
     }
 </style>
