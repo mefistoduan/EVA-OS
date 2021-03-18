@@ -33,7 +33,7 @@ const routes = [
 			{
 				path: "/",
 				name: "Main",
-				component: () => import("@/views/Main.vue"),
+				component: () => import("@/views/Auth/Main.vue"),
 				meta: {
 					title: "首页",
 				},
@@ -105,7 +105,7 @@ const routes = [
 			{
 				path: "/timePage",
 				name: "TimePage",
-				component: () => import("@/views/TimePage.vue"),
+				component: () => import("@/views/Eva/TimePage.vue"),
 				meta: {
 					title: "",
 				},
@@ -129,7 +129,7 @@ const routes = [
 			{
 				path: "/warningPage",
 				name: "WarningPage",
-				component: () => import("@/views/WarningPage.vue"),
+				component: () => import("@/views/Eva//WarningPage.vue"),
 				meta: {
 					title: "",
 				},
@@ -161,7 +161,7 @@ const routes = [
 			{
 				path: "/camera",
 				name: "camera",
-				component: () => import("@/views/camera.vue"),
+				component: () => import("@/views/Eva/camera.vue"),
 				meta: {
 					title: "",
 				},
