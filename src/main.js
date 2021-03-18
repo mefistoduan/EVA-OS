@@ -16,7 +16,7 @@ Vue.use(animated);
 
 if(process.env.NODE_ENV === 'development'){
     // 开发环境时使用模拟数据 引入mockjs
-    // require('./Mock/index.js');
+    require('./Mock/index.js');
 }else{
     // 实机环境时使用控制台 VConsole
     // let vConsole = new VConsole() // 初始化

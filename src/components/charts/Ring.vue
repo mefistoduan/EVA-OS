@@ -21,7 +21,7 @@
                     ]
                 },
                 chartExtend:{
-                    color:['#4ad2ff','#ad1453','#333333','#ffffff']
+                    color:['#4ad2ff','#ad1453','#333333','#1630ad']
                 }
             }
         },

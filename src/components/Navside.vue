@@ -33,7 +33,7 @@
               </el-menu-item>
             </el-menu-item-group>
           </el-submenu>
-          <el-menu-item @click="clickLogout" index="99">
+          <el-menu-item @click="clickLogout" index="">
             <i class="el-icon-arrow-left"></i>
             <span slot="title">退出登陆</span>
           </el-menu-item>

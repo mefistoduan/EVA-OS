@@ -47,14 +47,6 @@ const routes = [
 				},
 			},
 			{
-				path: "/mockPage",
-				name: "MockPage",
-				component: () => import("@/views/MockPage.vue"),
-				meta: {
-					title: "用户管理",
-				},
-			},
-			{
 				path: "/chart",
 				name: "Chart",
 				component: () => import("@/views/Chart.vue"),

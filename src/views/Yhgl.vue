@@ -1,26 +1,11 @@
 <template>
     <div>
         <el-card class="panel" shadow="always">
+          <h5>查询列表</h5>
             <div class="panel-body">
                 <div class=" panel_control">
                     <el-row :gutter="20">
                         <el-col :span="4">
-                            <em>起始:</em>
-                            <el-date-picker
-                                    class="panel_data"
-                                    v-model="panel.time1[0]"
-                                    type="date"
-                                    placeholder="起始日期">
-                            </el-date-picker>
-                        </el-col>
-                        <el-col :span="4">
-                            <em>截止:</em>
-                            <el-date-picker
-                                    class="panel_data"
-                                    v-model="panel.time1[1]"
-                                    type="date"
-                                    placeholder="截止日期">
-                            </el-date-picker>
                         </el-col>
                         <el-col :span="4">
                             <em>手机号:</em>
@@ -233,6 +218,6 @@
     }
 </script>
 
-<style scoped>
-    @import "../assets/css/panel.css";
+<style lang="scss" scoped>
+    @import "../assets/css/panel.scss";
 </style>

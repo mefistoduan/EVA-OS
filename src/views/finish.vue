@@ -14,12 +14,13 @@
           :default-sort="{prop: 'date', order: 'descending'}"
           element-loading-background="rgba(0, 0, 0, 0.8)"
           class=""
+          @current-change="clickChange"
           @selection-change="handleSelectionChange"
       >
         >
         <el-table-column label="选择" width="55">
           <template slot-scope="scope">
-            <el-radio v-model="tableRadio" :label="scope.row"><i></i></el-radio>
+            <el-radio  v-model="tableRadio" :label="scope.row"><i></i></el-radio>
           </template>
         </el-table-column>
         <el-table-column
@@ -302,6 +303,9 @@ export default {
     filterFmtDate(value, row, column) {
       let that = this;
       return nonTfmtDate(column, 11);
+    },
+    clickChange (item) {
+      this.tableRadio = item
     },
   },
   watch: {
