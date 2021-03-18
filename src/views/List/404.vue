@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="lt">
-                    <img src="../assets/404/man.png" alt="">
+                    <img src="../../assets/404/man.png" alt="">
                 </div>
                 <div class="rt">
                     <p>啊！啊！啊！页面走丢了！</p>

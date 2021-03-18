@@ -41,7 +41,7 @@ const routes = [
 			{
 				path: "/yhgl",
 				name: "Yhgl",
-				component: () => import("@/views/Yhgl.vue"),
+				component: () => import("@/views/List/Yhgl.vue"),
 				meta: {
 					title: "用户管理",
 				},
@@ -49,7 +49,7 @@ const routes = [
 			{
 				path: "/chart",
 				name: "Chart",
-				component: () => import("@/views/Chart.vue"),
+				component: () => import("@/views/List/Chart.vue"),
 				meta: {
 					title: "图表效果",
 				},
@@ -57,7 +57,7 @@ const routes = [
 			{
 				path: "/test",
 				name: "Test",
-				component: () => import("@/views/Test.vue"),
+				component: () => import("@/views/List/Test.vue"),
 				meta: {
 					title: "Test",
 				},
@@ -65,7 +65,7 @@ const routes = [
 			{
 				path: "/aboutUs",
 				name: "AboutUs",
-				component: () => import("@/views/AboutUs.vue"),
+				component: () => import("@/views/List/AboutUs.vue"),
 				meta: {
 					title: "关于我们",
 				},
@@ -73,7 +73,7 @@ const routes = [
 			{
 				path: "/pwd",
 				name: "Pwd",
-				component: () => import("@/views/Pwd.vue"),
+				component: () => import("@/views/System/Pwd.vue"),
 				meta: {
 					title: "密码修改",
 				},
@@ -81,7 +81,7 @@ const routes = [
 			{
 				path: "/basic",
 				name: "Basic",
-				component: () => import("@/views/Basic.vue"),
+				component: () => import("@/views/List/Basic.vue"),
 				meta: {
 					title: "基本设置",
 				},
@@ -89,7 +89,7 @@ const routes = [
 			{
 				path: "/upload",
 				name: "Upload",
-				component: () => import("@/views/Upload.vue"),
+				component: () => import("@/views/List/Upload.vue"),
 				meta: {
 					title: "上传文件",
 				},
@@ -105,7 +105,7 @@ const routes = [
 			{
 				path: "/handPage",
 				name: "HandPage",
-				component: () => import("@/views/HandPage.vue"),
+				component: () => import("@/views/Eva/HandPage.vue"),
 				meta: {
 					title: "",
 				},
@@ -113,7 +113,7 @@ const routes = [
 			{
 				path: "/radarPage",
 				name: "RadarPage",
-				component: () => import("@/views/RadarPage.vue"),
+				component: () => import("@/views/Eva/RadarPage.vue"),
 				meta: {
 					title: "",
 				},
@@ -129,7 +129,7 @@ const routes = [
 			{
 				path: "/finish",
 				name: "finish",
-				component: () => import("@/views/finish.vue"),
+				component: () => import("@/views/List/finish.vue"),
 				meta: {
 					title: "",
 				},
@@ -137,7 +137,7 @@ const routes = [
 			{
 				path: "/finishDetail",
 				name: "finishDetail",
-				component: () => import("@/views/finishDetail.vue"),
+				component: () => import("@/views/List/finishDetail.vue"),
 				meta: {
 					title: "",
 				},
@@ -145,7 +145,7 @@ const routes = [
 			{
 				path: "/3dColumn",
 				name: "3dColumn",
-				component: () => import("@/views/3dColumn.vue"),
+				component: () => import("@/views/animate/3dColumn.vue"),
 				meta: {
 					title: "",
 				},
@@ -161,7 +161,7 @@ const routes = [
 			{
 				path: "/grpc",
 				name: "grpc",
-				component: () => import("@/views/grpc.vue"),
+				component: () => import("@/views/List/grpc.vue"),
 				meta: {
 					title: "",
 				},
@@ -169,7 +169,7 @@ const routes = [
 			{
 				path: "/webscoket",
 				name: "webscoket",
-				component: () => import("@/views/webscoket.vue"),
+				component: () => import("@/views/List/webscoket.vue"),
 				meta: {
 					title: "",
 				},
@@ -192,7 +192,7 @@ const routes = [
 	{
 		path: "*",
 		name: "404",
-		component: () => import("../views/404.vue"),
+		component: () => import("../views/List/404.vue"),
 	},
 ];
 

@@ -70,6 +70,50 @@ let navs = [ {
             "memo": null,
             "clicon": "home_icon"
         },
+        {
+            "clmid": "61",
+            "spclmid": "0",
+            "ordno": "0",
+            "c_level": "2",
+            "clmcode": "front_index",
+            "clmname": "关于我们",
+            "clmurl": "/aboutUs",
+            "prname": null,
+            "en": "1",
+            "show": "1",
+            "grouplist": "2,5",
+            "memo": null,
+            "clicon": "home_icon"
+        },
+        {
+            "clmid": "62",
+            "spclmid": "0",
+            "ordno": "0",
+            "c_level": "2",
+            "clmcode": "front_index",
+            "clmname": "404",
+            "clmurl": "/404",
+            "prname": null,
+            "en": "1",
+            "show": "1",
+            "grouplist": "2,5",
+            "memo": null,
+            "clicon": "home_icon"
+        },  {
+            "clmid": "63",
+            "spclmid": "0",
+            "ordno": "0",
+            "c_level": "2",
+            "clmcode": "upload",
+            "clmname": "上传",
+            "clmurl": "/upload",
+            "prname": null,
+            "en": "1",
+            "show": "1",
+            "grouplist": "2,5",
+            "memo": null,
+            "clicon": "home_icon"
+        },
     ]
 },
     {
@@ -221,54 +265,6 @@ let navs = [ {
             },
         ]
     },
-    {
-        "clmid": "6",
-        "spclmid": "0",
-        "ordno": "1",
-        "c_level": "1",
-        "clmcode": "index",
-        "clmname": "常用页面",
-        "clmurl": "",
-        "prname": "",
-        "en": "1",
-        "show": "1",
-        "grouplist": "2,5",
-        "memo": "",
-        "clicon": "el-icon-s-order",
-        "childs": [
-            {
-                "clmid": "61",
-                "spclmid": "0",
-                "ordno": "0",
-                "c_level": "2",
-                "clmcode": "front_index",
-                "clmname": "关于我们",
-                "clmurl": "/aboutUs",
-                "prname": null,
-                "en": "1",
-                "show": "1",
-                "grouplist": "2,5",
-                "memo": null,
-                "clicon": "home_icon"
-            },
-            {
-                "clmid": "62",
-                "spclmid": "0",
-                "ordno": "0",
-                "c_level": "2",
-                "clmcode": "front_index",
-                "clmname": "404",
-                "clmurl": "/404",
-                "prname": null,
-                "en": "1",
-                "show": "1",
-                "grouplist": "2,5",
-                "memo": null,
-                "clicon": "home_icon"
-            },
-        ]
-    },
-
 ];
 
 export default navs;

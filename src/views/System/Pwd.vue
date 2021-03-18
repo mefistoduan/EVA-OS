@@ -23,8 +23,8 @@
 
 <script>
     let qs = require('qs');
-    import Global from '../Global.js'
-    import {modPwd, logout} from '../api/getApiRes.js'
+    import Global from '../../Global.js'
+    import {modPwd, logout} from '../../api/getApiRes.js'
 
     export default {
         data() {

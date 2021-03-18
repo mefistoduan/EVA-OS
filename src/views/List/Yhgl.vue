@@ -73,7 +73,7 @@
 </template>
 
 <script>
-    import Global from '../Global.js'
+    import Global from '../../Global.js'
 
     export default {
         data() {
@@ -219,5 +219,5 @@
 </script>
 
 <style lang="scss" scoped>
-    @import "../assets/css/panel.scss";
+    @import "../../assets/css/panel";
 </style>

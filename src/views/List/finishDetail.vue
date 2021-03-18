@@ -149,7 +149,7 @@
 </template>
 
 <script>
-    import Global from '../Global.js'
+    import Global from '../../Global.js'
     import {
         ClassOverDetailListQuery,
         ClassVipuserQuery,
@@ -163,7 +163,7 @@
         ShopManagerListQuery,
         VipUserSimpleQuery,
         ClassOverDetailDel
-    } from "../api/getApiRes";
+    } from "../../api/getApiRes";
 
     let qs = require('qs');
     export default {
@@ -666,7 +666,7 @@
 </script>
 
 <style scoped>
-    @import "../assets/css/panel.css";
+    @import "../../assets/css/panel.css";
 
     .context {
         height: 770px;

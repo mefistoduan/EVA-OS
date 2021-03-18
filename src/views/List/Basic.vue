@@ -17,7 +17,7 @@
 
 <script>
     let qs = require('qs');
-    import {editbasicinfo} from '../api/getApiRes.js'
+    import {editbasicinfo} from '../../api/getApiRes.js'
 
     export default {
         data() {
@@ -26,9 +26,6 @@
                     pvalue_interval: '12',
                 }
             }
-        },
-        mounted() {
-
         },
         methods: {
             onSubmit() {
