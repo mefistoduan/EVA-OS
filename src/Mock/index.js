@@ -80,7 +80,7 @@ let logout = function () {
     return res;
 };
 
-let MockState = 1;
+let MockState = 0;
 if (MockState == 1) {
     Mock.mock('/api/worldDetail', 'post', worldDetail());
     Mock.mock('/api/SignIn', 'post', SignIn());//用户登录
