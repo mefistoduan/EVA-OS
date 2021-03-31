@@ -8,11 +8,8 @@
 </template>
 
 <script>
-// import {EchoRequest} from "@/assets/grpc/echo_pb";
-// import {EchoServiceClient} from "@/assets/grpc/echo_grpc_web_pb";
-import {SignInRequest, FlushDataRequest, Data} from "@/assets/grpcBack/grpcweb_pb";
-// import {EchoServiceClient} from "@/assets/grpcBack/grpcweb_grpc_web_pb";
-import {ApiClient} from "@/assets/grpcBack/grpcweb_grpc_web_pb";
+import {SignInPasswordRequest, FlushDataRequest, Data} from "@/assets/grpcBack/im_pb";
+import {ApiClient} from "@/assets/grpcBack/im_grpc_web_pb";
 
 export default {
   name: 'App',
@@ -29,39 +26,41 @@ export default {
 
   created: function () {
     let that = this;
-    this.client = new ApiClient("http://192.168.0.57:18080", null, null);
-    let text = "123"
-    // let getRequest = new SignInRequest();
+    this.client = new ApiClient("http://192.168.0.3:20010", null, null);
+    let pwdtext = "asdf*123"
+    let authtext = "admin"
+    let getRequest = new SignInPasswordRequest();
     // 对字符串进行编码
+    getRequest.setPassword(pwdtext);
+    getRequest.setAuth(authtext);
+    getRequest.setExpirationsec(10000);
+    let res = this.client.signInUserCode(getRequest, {}, (err, response) => {
+      this.message = response.getToken();
+    });
+
+
+    // let getRequest = new FlushDataRequest();
     // getRequest.setName(text);
-    // let res = this.client.signIn(getRequest, {}, (err, response) => {
-    //   console.log(response.getToken());
-    //   this.message = response.getToken();
+    // let stream = this.client.flushData(getRequest, {
+    //   token:1122334
+    // }, (err, response) => {
+    //   console.log('连接出现问题 err:' + err);
+    //   // that.grpcSrc = response
     // });
 
-
-    let getRequest = new FlushDataRequest();
-    getRequest.setName(text);
-    let stream = this.client.flushData(getRequest, {
-      token:1122334
-    }, (err, response) => {
-      console.log('连接出现问题 err:' + err);
-      // that.grpcSrc = response
-    });
-
-    // 获取数据流
-    stream.on('data', (response) => {
-      that.name = response.getName();
-      that.message = response.getHeartrate();
-      console.log('已推送数据');
-    });
-
-    // 报错处理
-    stream.on('error', (err) => {
-      console.log('当前推送错误 err:' + err);
-      console.log(`Unexpected stream error: code = ${err.code}` +
-          `, message = "${err.message}"`);
-    });
+    // // 获取数据流
+    // stream.on('data', (response) => {
+    //   that.name = response.getName();
+    //   that.message = response.getHeartrate();
+    //   console.log('已推送数据');
+    // });
+    //
+    // // 报错处理
+    // stream.on('error', (err) => {
+    //   console.log('当前推送错误 err:' + err);
+    //   console.log(`Unexpected stream error: code = ${err.code}` +
+    //       `, message = "${err.message}"`);
+    // });
 
   },
   methods: {}

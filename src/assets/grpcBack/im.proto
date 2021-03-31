@@ -1,0 +1,309 @@
+syntax = "proto3";
+
+option go_package =".;im";
+
+package im;
+
+
+enum ErrorCode{
+  OK = 0;
+  PARAM = 4001;
+  Exist = 4002;
+  Token = 4003;
+}
+
+// metadata: 综合管理系统前端调用需要字段 token 用作登录验证；子系统调用需要字段 sys_token 用作系统验证
+service Api {
+  rpc SignUpUserCode (SignUpRequest) returns (SignUpReply) {}
+  rpc SignUpPhone (SignUpRequest) returns (SignUpReply) {}
+
+  rpc SignInUserCode (SignInPasswordRequest) returns (TokenParam)  {}
+  rpc SignInWithPhonePassword (SignInPasswordRequest) returns (TokenParam)  {}
+
+  // ---子系统专用---
+
+  // 检查token有效性
+  rpc SubSessionCheck (TokenParam) returns (SessionCheckReply)  {}
+  // 检查token所属用户是否拥有调用service权限
+  rpc SubPermissionCheck (PermissionCheck) returns (SessionCheckReply)  {}
+  // 登出传入token
+  rpc SubSignOut (TokenParam) returns (DefaultReply)  {}
+  // 批量保存service
+  rpc SubServiceSaveList (SaveServiceListRequest) returns (DefaultReply)  {}
+
+  // ---子系统专用---
+
+  // 用户列表
+  rpc UserList (UserListRequest) returns (UserListReply)  {}
+  // 单个用户信息详情
+  rpc UserGetInfo (UserGetInfoRequest) returns (UserInfo)  {}
+  // 用户添加多个角色
+  rpc UserAddRoles(UserRolesRequest) returns (DefaultReply)  {}
+  // 用户移除多个角色
+  rpc UserRemoveRoles(UserRolesRequest) returns (DefaultReply)  {}
+  // 用户获取栏目列表
+  rpc UserGetColumnList(UserGetColumnListRequest) returns (UserGetColumnListReply)  {}
+  // 创建角色
+  rpc RoleCreate(CreateRoleRequest) returns (DefaultReply)  {}
+  // 角色列表
+  rpc RoleList(RoleListRequest) returns (RoleListReply)  {}
+  // 角色编辑
+  rpc RoleEdit(Role) returns (DefaultReply)  {}
+  // 角色添加多个service权限
+  rpc RoleAddPermissions(RolePermissionRequest) returns (DefaultReply)  {}
+  // 角色移除多个service权限
+  rpc RoleRemovePermissions(RolePermissionRequest) returns (DefaultReply)  {}
+
+  // service权限列表
+  rpc ServiceList(ServiceListRequest) returns (ServiceListReply)  {}
+  // 移除service
+  rpc ServiceRemoveList(ServiceRemoveRequest) returns (DefaultReply)  {}
+
+  rpc ShopCreate (CreateShopRequest) returns (CreateReply)  {}
+  rpc ShopList (ShopListRequest) returns (ShopListReply)  {}
+  rpc SystemAddShop (SystemAddShopRequest) returns (DefaultReply)  {}
+  rpc SystemAddUser (SystemAddUserRequest) returns (DefaultReply)  {}
+  // ---总后台专用API---
+
+  rpc IMSystemCreate (CreateSystemRequest) returns (TokenParam)  {}
+  rpc IMSignOut (DefaultRequest) returns (DefaultReply)  {}
+  rpc IMSelfInfo (DefaultRequest) returns (UserInfo)  {}
+  rpc IMMessageRcv (DefaultRequest) returns (stream Message)  {}
+
+  // ---总后台专用API---
+}
+message DefaultRequest{
+}
+message TokenParam{
+  string token = 1;
+}
+
+message DefaultReply{}
+
+message SignUpReply{
+  int64 userId = 1;
+}
+
+message SignInPasswordRequest {
+  string auth = 1;
+  string password = 2;
+  int64 sysId = 3;
+  //session有效期,单位:秒
+  int64 expirationSec = 4;
+}
+
+enum Status{
+  Null = 0;
+  Ban = 1;
+  On = 2;
+  Delete = 9;
+}
+
+message SignUpRequest {
+  string userCode = 1 ;
+  string name = 2 ;
+  string email = 3 ;
+  string phone = 4 ;
+  string wxOpenId = 5;
+  string qq = 6;
+  string password = 7;
+  string question = 8;
+  string answer = 9;
+  string memo = 10;
+}
+
+message UserInfo {
+  int64  id = 1 ;
+  string userCode = 2 ;
+  string name = 3 ;
+  string email = 4 ;
+  string phone = 5 ;
+  string qq = 7;
+  string memo = 11;
+  Status status = 12;
+}
+
+message CreateReply{
+  int64 id = 1;
+}
+
+message PermissionCheck {
+  string token = 1;
+  // service全路径，区分大小写，如User/List
+  string servicePath = 2;
+}
+
+
+message SessionCheckReply {
+  int64 userId = 1;
+}
+
+message Service {
+  string path = 1;
+  string memo = 2;
+}
+
+message SaveServiceListRequest{
+  repeated Service list = 1;
+}
+
+message CreateSystemRequest{
+  string fullName = 1;
+  string shortname = 2;
+  string sysUrl = 3;
+  string memo = 4;
+}
+
+message UserGetColumnListRequest{
+  int64 userId = 1;
+  // 最顶层为0
+  int32 parentId = 2;
+  // 仅综合管理后台调用有效
+  int64 sysId = 3;
+}
+
+message Column{
+  string name = 1;
+  string url = 2;
+  string code = 3;
+  // 顺序
+  int32 sn = 4;
+  Status status = 5;
+  bool navShow = 6;
+  int64 id = 7;
+}
+
+message UserGetColumnListReply{
+  repeated Column list = 1;
+}
+
+message CreateRoleRequest{
+  string name = 1;
+  string memo = 2;
+}
+
+message Role {
+  int64  id = 1;
+  string name = 2;
+  string memo = 3;
+  Status status = 4;
+  string systemName = 5;
+}
+
+message RoleListRequest{
+  int64 userId = 1;
+  int64 sysId = 2;
+}
+
+message UserListRequest{
+  // 0为全部
+  int64 roleId = 1;
+  Status status = 2;
+  // 模糊查询
+  string name = 3;
+  int64 lcstypeid = 4;
+  // 仅总后台请求时有效
+  int64 sysId = 5;
+}
+
+message UserListReply{
+  repeated UserInfo list = 1;
+}
+
+message UserGetInfoRequest{
+  int64 userId = 1;
+}
+message UserRolesRequest{
+  int64 userId = 1;
+  repeated int64 roleIdList = 2;
+}
+
+message RoleListReply {
+  repeated Role list = 1;
+}
+
+message RolePermissionRequest{
+  int64 roleId = 1;
+  repeated string servicePath = 2;
+}
+
+message ServiceListRequest{
+  // 仅总系统有效
+  int64 sysId = 1;
+}
+
+message ServiceListReply{
+  repeated Service list = 1;
+}
+
+message ServiceRemoveRequest{
+  repeated string pathList = 1;
+}
+
+message CreateShopRequest{
+    string name = 1;
+    string key = 2;
+    //上级商家Id
+    int64  sId = 3;
+    string addr = 4;
+    string phone = 5;
+    string contacts =6;
+    int64 createUser = 7;
+}
+
+message ShopListRequest{
+  // 子系统调用时，0：展示所有商家，大于0则展示本系统商家
+  int64 sysId = 1;
+  // 模糊查询
+  string name = 2;
+  // Status_Null查询全部
+  Status status = 3;
+  //上级商家Id, -1 时查询全部
+  int64 sId = 4;
+}
+
+message ShopInfo{
+  int64 shopId          =1;
+  string name           =2;
+  int64 sId             =3;
+  string addr           =4;
+  string phone          =5;
+  string contacts       =6;
+  Status status         =7;
+  int64 created_at      =8;
+  int64 created_user    =9;
+  int64 updated_at      =10;
+  int64 updated_user    =11;
+}
+
+message ShopListReply{
+  repeated ShopInfo list = 1;
+}
+
+message SystemAddShopRequest{
+  // 仅总后台调用有效
+  int64 sysId = 1;
+  int64 shopId = 2;
+}
+
+
+message SystemAddUserRequest{
+  // 仅总后台调用有效
+  int64 sysId = 1;
+  int64 userId = 2;
+}
+
+message Message{
+    int64 id  = 1;
+    string title = 2;
+    string content = 3;
+    enum Level{
+      Null = 0;
+      Normal = 1;
+      Warn = 2;
+      Error = 3;
+    }
+
+    Level level = 4;
+    int64 createAt = 5;
+}

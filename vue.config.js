@@ -18,5 +18,5 @@ module.exports = {
 	},
 	// 输出文件目录
 	outputDir: "D:/wwwroot/test/eva/static_pc",
-    productionSourceMap:false
+    productionSourceMap:false,
 };
