@@ -1,5 +1,5 @@
 module.exports = {
-	lintOnSave: false,
+	lintOnSave: false, // 关掉eslint
 	devServer: {
 		port: 8214, // 端口
 		overlay: {
@@ -18,5 +18,5 @@ module.exports = {
 	},
 	// 输出文件目录
 	outputDir: "D:/wwwroot/test/eva/static_pc",
-    productionSourceMap:false,
+    productionSourceMap:false,//减少打包后体积
 };
