@@ -127,6 +127,20 @@ let navs = [ {
             "grouplist": "2,5",
             "memo": null,
             "clicon": "home_icon"
+        }, {
+            "clmid": "63",
+            "spclmid": "0",
+            "ordno": "0",
+            "c_level": "2",
+            "clmcode": "vuex",
+            "clmname": "vuex",
+            "clmurl": "/vuex",
+            "prname": null,
+            "en": "1",
+            "show": "1",
+            "grouplist": "2,5",
+            "memo": null,
+            "clicon": "home_icon"
         },
     ]
 },

@@ -53,6 +53,13 @@ const routes = [
 				meta: {
 					title: "图表效果",
 				},
+			},{
+				path: "/vuex",
+				name: "vuex",
+				component: () => import("@/views/List/vuex.vue"),
+				meta: {
+					title: "vuex",
+				},
 			},
 			{
 				path: "/test",
