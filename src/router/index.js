@@ -188,6 +188,13 @@ const routes = [
 				meta: {
 					title: "",
 				},
+			},{
+				path: "/routerwatch",
+				name: "routerwatch",
+				component: () => import("@/views/List/routerwatch.vue"),
+				meta: {
+					title: "",
+				},
 			},
 		],
 	},
