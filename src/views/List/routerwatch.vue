@@ -7,6 +7,7 @@
     <el-button @click="reset()">reset</el-button>
     <br>
     dir:{{ dir }}
+    block:{{block}}
   </div>
 </template>
 
@@ -14,25 +15,25 @@
 export default {
   data() {
     return {
-      dir: 0
+      dir: 0,
+      block: 1,
     }
   },
   watch: {
     $route() {
-      console.log('this.$route.query.dir', this.$route.query.dir)
       this.dir = this.$route.query.dir || 0;
-    },
-    dir() {
+      this.block = this.$route.query.block || 1;
     },
   },
   methods: {
     gopage(i) {
       this.$router.push(
           {
-            path: '/routerwatch', query: {dir: i}
+            path: '/routerwatch', query: {dir: i,block:2}
           }
       );
-    }, reset() {
+    },
+    reset() {
       this.$router.push(
           {
             path: '/routerwatch', query: {}
