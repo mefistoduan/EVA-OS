@@ -1,6 +1,13 @@
 #eva-os
 ##常用的后台管理模板  
 
+####
+todolist
+
+<!-- 1.await sync的使用 -->
+<!-- 2.数组操作一览表 -->
+
+
 基于 https://panjiachen.github.io/vue-element-admin-site/zh/guide/ 的版本， 只保留常用功能和修改部分UI效果  
 
 ##安装：  

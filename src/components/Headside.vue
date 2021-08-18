@@ -26,7 +26,7 @@
                 </li>
                 <li class="pull-right" style="min-height: 40px;">
 						<span class="customer_serve">工作日 {{time}} &nbsp;客服电话： &nbsp;{{tel}}&nbsp;
-                            <a href="http://wpa.b.qq.com/cgi/wpa.php?ln=1&amp;key=XzkzODA2Mzg3OV80ODQ0MTlfNDAwMDA3OTM2MF8yXw"
+                            <a href="http://wpa.b.qq.com/cgi/wpa.php?ln=1&amp;key="
                                id="qq_customer" target="_blank">
                                  客服QQ: {{qq}}
                             </a>
@@ -39,7 +39,6 @@
 </template>
 <script>
     import axios from 'axios';
-
     let qs = require('qs');
     export default {
         data() {
@@ -48,11 +47,11 @@
                     name: localStorage.userName,
                 },
                 time: '8:30-17:30',
-                tel: '4000-0079-360',
-                qq: '4000079360',
+                tel: '0000-0000-000',
+                qq: '000000000',
                 newnum: '',
-                newnumState: false,
-                left_panel_state: false
+                newnumState: true,
+                left_panel_state: true
             }
         },
         mounted() {
@@ -72,13 +71,7 @@
             left_hide: function () {
                 let that = this;
                 that.left_panel_state = !that.left_panel_state;
-                console.log(223);
                 this.$emit('lefthide');
-                // if (!that.left_panel_state) {
-                //     this.$emit('left_hide_func');
-                // } else {
-                //     this.$emit('right_hide_func');
-                // }
             },
 //            打开消息提示
             checkNews: function () {

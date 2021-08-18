@@ -1,0 +1,88 @@
+ul,li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+em,s,i {
+  font-style: normal;
+  text-decoration: none;
+}
+.sub_title {
+  width: 96%;
+  overflow: hidden;
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
+  text-align: left;
+  em {
+    text-decoration: none;
+    font-style: normal;
+    float: left;
+  }
+}
+ .el-input {
+  width: 150px;
+  float: left;
+}
+
+.el-select {
+  width: 150px;
+  float: left;
+}
+
+h5 {
+  width: 100%;
+  float: left;
+  font-weight: normal;
+  font-size: 16px;
+  text-align: left;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.panel {
+  width: 100%;
+  overflow: hidden;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  background: #fff;
+  padding: 5px;
+  em {
+    float: left;
+    text-align: left;
+    line-height: 35px;
+    margin-right: 10px;
+    font-style: normal;
+  }
+  /deep/ .el-input__inner {
+    width: 150px;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 5px;
+    border-radius: 0;
+    float: left;
+    padding-right: 22px;
+  }
+  /deep/ .el-date-editor--daterange {
+    width: 280px;
+  }
+  /deep/ .el-date-editor .el-range-separator {
+    width: 30px;
+  }
+  /deep/ .el-input__icon {
+    height: 30px;
+    line-height: -0px;
+  }
+}
+
+.dataTables_length {
+  width: 380px;
+  float: left;
+  margin-right: 10px;
+  text-align: left;
+  font-size: 14px;
+  /deep/ .el-input {
+    width: 100px;
+  }
+}

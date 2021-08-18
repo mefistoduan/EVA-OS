@@ -1,5 +1,5 @@
 {
-  "name": "new_back",
+  "name": "eva_os",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -7,12 +7,18 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "animate.css": "^4.1.1",
     "core-js": "^3.6.5",
     "echarts": "^4.8.0",
     "element-ui": "^2.13.2",
+    "google-protobuf": "^3.15.0-rc.1",
+    "grpc-web": "^1.2.0",
     "mockjs": "^1.1.0",
     "nprogress": "^0.2.0",
+    "postcss-loader": "^4.0.4",
+    "postcss-pxtorem": "^5.1.1",
     "qs": "^6.9.4",
+    "sass-loader": "^10.1.1",
     "three-css2drender": "^1.0.0",
     "three-obj-mtl-loader": "^1.0.3",
     "v-charts": "^1.19.0",
@@ -27,6 +33,8 @@
     "@vue/cli-plugin-vuex": "~4.4.0",
     "@vue/cli-service": "~4.4.0",
     "axios": "^0.18.0",
+    "compression-webpack-plugin": "^1.1.12",
+    "node-sass": "^5.0.0",
     "vue-cli-plugin-axios": "0.0.4",
     "vue-template-compiler": "^2.6.11"
   },

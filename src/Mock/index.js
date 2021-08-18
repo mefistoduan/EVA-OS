@@ -80,12 +80,16 @@ let logout = function () {
     return res;
 };
 
-Mock.mock('/api/worldDetail', 'post', worldDetail());
-Mock.mock('/api/SignIn', 'post', SignIn());//用户登录
-Mock.mock('/api/editbasicinfo', 'post', editbasicinfo());//用户设置修改
-Mock.mock('/api/modPwd', 'post', modPwd());//密码修改
-Mock.mock('/api/logout', 'post', logout());//退出登陆
+let MockState = 0;
+if (MockState == 1) {
+    Mock.mock('/api/worldDetail', 'post', worldDetail());
+    Mock.mock('/api/SignIn', 'post', SignIn());//用户登录
+    Mock.mock('/api/editbasicinfo', 'post', editbasicinfo());//用户设置修改
+    Mock.mock('/api/modPwd', 'post', modPwd());//密码修改
+    Mock.mock('/api/logout', 'post', logout());//退出登陆
 // test
-Mock.mock('/api/TestClassPreFinishListQuery', 'post', TestClassPreFinishListQuery());//退出登陆
+    Mock.mock('/api/TestClassPreFinishListQuery', 'post', TestClassPreFinishListQuery());//
+
+}
 
 export default Mock;
