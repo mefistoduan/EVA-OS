@@ -195,6 +195,13 @@ const routes = [
 				meta: {
 					title: "",
 				},
+			},{
+				path: "/hexagon",
+				name: "hexagon",
+				component: () => import("@/views/Eva/hexagon.vue"),
+				meta: {
+					title: "",
+				},
 			},
 		],
 	},

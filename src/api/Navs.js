@@ -258,6 +258,20 @@ let navs = [ {
                 "grouplist": "2,5",
                 "memo": null,
                 "clicon": "home_icon"
+            },{
+                "clmid": "33",
+                "spclmid": "0",
+                "ordno": "0",
+                "c_level": "2",
+                "clmcode": "front_index",
+                "clmname": "hexagon",
+                "clmurl": "/hexagon",
+                "prname": null,
+                "en": "1",
+                "show": "1",
+                "grouplist": "2,5",
+                "memo": null,
+                "clicon": "home_icon"
             }
         ]
     },
