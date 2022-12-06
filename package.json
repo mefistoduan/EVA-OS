@@ -17,7 +17,7 @@
     "nprogress": "^0.2.0",
     "postcss-loader": "^4.0.4",
     "postcss-pxtorem": "^5.1.1",
-    "qs": "^6.9.4",
+    "qs": "^6.9.7",
     "sass-loader": "^10.2.0",
     "three-css2drender": "^1.0.0",
     "three-obj-mtl-loader": "^1.0.3",
